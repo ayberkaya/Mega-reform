@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FAFBF9;
+  --foreground: #1A0F2E;
+  --primary: #2D1B4E;
+  --primary-light: #4A2D7A;
+  --primary-dark: #1A0F2E;
+  --lavender: #D3D3FF;
+  --lavender-light: #E8E8FF;
+  --sage: #9DC183;
+  --sage-light: #B8D4A3;
+  --gold: #D4AF37;
+  --gold-light: #E5C85A;
+  --cream: #F5E6D3;
+  --cream-light: #FFF8F0;
+  --cream-dark: #E8D5BE;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-lavender: var(--lavender);
+  --color-lavender-light: var(--lavender-light);
+  --color-sage: var(--sage);
+  --color-sage-light: var(--sage-light);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-cream: var(--cream);
+  --color-cream-light: var(--cream-light);
+  --color-cream-dark: var(--cream-dark);
+
+  --font-heading: var(--font-cormorant);
+  --font-body: var(--font-inter);
+
+  --ease-spiritual: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  --animate-breathe: breathe 4s ease-in-out infinite;
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-glow: glow 3s ease-in-out infinite;
+  --animate-gradient-shift: gradient-shift 20s ease infinite;
+  --animate-fade-in: fade-in 0.6s var(--ease-spiritual) forwards;
+  --animate-slide-up: slide-up 0.6s var(--ease-spiritual) forwards;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.4); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lavender);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* Selection colors */
+::selection {
+  background: var(--lavender);
+  color: var(--primary-dark);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

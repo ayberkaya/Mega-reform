@@ -20,6 +20,13 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Troubleshooting
+
+**"Can't resolve 'tailwindcss' in '/Users/kaya/Coding'"** — The bundler is using `/Users/kaya/Coding` as resolve context instead of the project folder. Not caused by MCP (MCP only affects Cursor’s file access). Try in order:
+
+The default `dev` script uses webpack so Tailwind resolves correctly. Use `bun run dev:turbo` for Turbopack (may fail with same error unless workspace root is `MeditateClaude`).
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
