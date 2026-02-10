@@ -1,5 +1,7 @@
 # Stock videos
 
+**Not:** `.mp4` / `.webm` dosyaları repo'ya commit edilmez (GitHub 100 MB limiti). Bu klasöre koyduğunuz videolar sadece yerel ve deploy ortamında kullanılır; CDN kullanmak için `constants.ts` içindeki URL'leri güncelleyin.
+
 Tema videoları `src/lib/utils/constants.ts` içindeki `STOCK_VIDEOS` ile yapılandırılıyor.
 
 **Performans:** 720p, kısa klipler kullanın; büyük dosyalar yavaşlatır.

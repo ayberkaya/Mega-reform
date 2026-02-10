@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local video assets (GitHub 100MB limit; use CDN or deploy uploads)
+/public/videos/*.mp4
+/public/videos/*.webm
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
