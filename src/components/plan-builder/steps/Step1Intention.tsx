@@ -19,14 +19,15 @@ export function Step1Intention({ selected, onChange }: Step1IntentionProps) {
         <li
           key={opt.id}
           className="opacity-0 animate-[plan-card-in_0.5s_var(--ease-spiritual)_forwards]"
-          style={{ animationDelay: `${i * 80}ms` }}
+          style={{ animationDelay: `${i * 90}ms` }}
         >
           <label
             className={cn(
-              "flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3.5 transition-all duration-200",
+              "relative flex cursor-pointer items-center gap-4 rounded-2xl border-2 px-4 py-3.5 transition-all duration-300",
+              "hover:border-lavender/50 hover:bg-lavender/5",
               selected === opt.id
-                ? "border-primary bg-lavender/25 shadow-[0_0_0_1px_rgba(45,27,78,0.15)] animate-[plan-card-glow_4s_ease-in-out_infinite]"
-                : "border-lavender/30 hover:border-lavender/60 hover:bg-lavender/10"
+                ? "border-primary bg-gradient-to-br from-lavender/30 to-lavender/10 shadow-lg animate-[plan-card-glow_4s_ease-in-out_infinite]"
+                : "border-lavender/25 bg-white/80"
             )}
           >
             <input
@@ -38,7 +39,22 @@ export function Step1Intention({ selected, onChange }: Step1IntentionProps) {
               className="sr-only"
               aria-label={opt.label}
             />
-            <span className="font-body text-foreground">{opt.label}</span>
+            <span
+              className={cn(
+                "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-all",
+                selected === opt.id
+                  ? "border-primary bg-primary"
+                  : "border-foreground/20 bg-transparent"
+              )}
+              aria-hidden
+            >
+              {selected === opt.id && (
+                <span className="h-1.5 w-1.5 rounded-full bg-white" />
+              )}
+            </span>
+            <span className="font-body text-foreground font-medium">
+              {opt.label}
+            </span>
           </label>
         </li>
       ))}

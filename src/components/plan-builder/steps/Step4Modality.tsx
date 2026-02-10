@@ -35,15 +35,16 @@ export function Step4Modality({ selected, onChange }: Step4ModalityProps) {
         return (
           <li
             key={opt.id}
-            className="opacity-0 animate-[plan-card-in_0.4s_var(--ease-spiritual)_forwards]"
+            className="opacity-0 animate-[plan-card-in_0.45s_var(--ease-spiritual)_forwards]"
             style={{ animationDelay: `${i * 100}ms` }}
           >
             <label
               className={cn(
-                "flex flex-col cursor-pointer items-center gap-2 rounded-xl border px-3 py-4 transition-all duration-200",
+                "flex flex-col cursor-pointer items-center gap-3 rounded-2xl border-2 px-3 py-4 transition-all duration-300",
+                "hover:border-lavender/50 hover:bg-lavender/5",
                 isSelected
-                  ? "border-primary bg-lavender/20 animate-[plan-select-pop_0.35s_ease-out]"
-                  : "border-lavender/30 hover:border-lavender/60 hover:bg-lavender/10"
+                  ? "border-primary bg-gradient-to-br from-lavender/25 to-lavender/5 shadow-md ring-2 ring-primary/20 animate-[plan-select-pop_0.35s_ease-out]"
+                  : "border-lavender/25 bg-white/80"
               )}
             >
               <input
@@ -53,10 +54,16 @@ export function Step4Modality({ selected, onChange }: Step4ModalityProps) {
                 className="sr-only"
                 aria-label={opt.label}
               />
-              <span className="text-2xl" aria-hidden>
+              <span
+                className={cn(
+                  "flex h-12 w-12 items-center justify-center rounded-2xl text-2xl transition-all",
+                  isSelected ? "bg-primary/15" : "bg-lavender/20"
+                )}
+                aria-hidden
+              >
                 {ICONS[opt.id] ?? "•"}
               </span>
-              <span className="text-center text-sm font-body text-foreground">
+              <span className="text-center text-sm font-body font-medium text-foreground leading-tight">
                 {opt.label}
               </span>
             </label>

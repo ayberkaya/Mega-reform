@@ -115,6 +115,56 @@
   100% { transform: translateX(100%); }
 }
 
+/* Plan builder: premium card lift when selected */
+@keyframes plan-card-lift {
+  to {
+    box-shadow: 0 4px 20px rgba(45, 27, 78, 0.12), 0 0 0 2px rgba(211, 211, 255, 0.6);
+    transform: translateY(-2px);
+  }
+}
+
+/* Plan builder: reveal title entrance */
+@keyframes plan-reveal-title {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Plan builder: reveal line stagger */
+@keyframes plan-reveal-line {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Plan builder: synthesis message fade */
+@keyframes plan-msg-fade {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Plan builder: keyword appear (one-by-one feel) */
+@keyframes plan-keyword-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Plan builder: CTA shine on hover */
+@keyframes plan-cta-shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Plan builder: soft ambient pulse (background) */
+@keyframes plan-ambient-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+/* Plan builder: mandala slow rotate */
+@keyframes plan-mandala-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

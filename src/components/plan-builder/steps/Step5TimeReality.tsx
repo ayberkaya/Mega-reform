@@ -17,7 +17,7 @@ export function Step5TimeReality({ selected, onChange }: Step5TimeRealityProps) 
   return (
     <div className="space-y-4">
       <ul
-        className="space-y-2"
+        className="space-y-2.5"
         role="radiogroup"
         aria-label="Gerçekçi olalım…"
       >
@@ -25,10 +25,11 @@ export function Step5TimeReality({ selected, onChange }: Step5TimeRealityProps) 
           <li key={opt.id}>
             <label
               className={cn(
-                "flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 transition-all",
+                "relative flex cursor-pointer items-center gap-4 rounded-2xl border-2 px-4 py-3.5 transition-all duration-300",
+                "hover:border-lavender/50 hover:bg-lavender/5",
                 selected === opt.id
-                  ? "border-primary bg-lavender/20"
-                  : "border-lavender/30 hover:border-lavender/60"
+                  ? "border-primary bg-gradient-to-br from-lavender/25 to-lavender/5 shadow-md"
+                  : "border-lavender/25 bg-white/80"
               )}
             >
               <input
@@ -37,21 +38,41 @@ export function Step5TimeReality({ selected, onChange }: Step5TimeRealityProps) 
                 value={opt.id}
                 checked={selected === opt.id}
                 onChange={() => onChange(opt.id)}
-                className="h-4 w-4 border-lavender text-primary focus:ring-lavender"
+                className="sr-only"
                 aria-label={opt.label}
               />
-              <span className="font-body text-foreground">{opt.label}</span>
+              <span
+                className={cn(
+                  "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-all",
+                  selected === opt.id
+                    ? "border-primary bg-primary"
+                    : "border-foreground/20 bg-transparent"
+                )}
+                aria-hidden
+              >
+                {selected === opt.id && (
+                  <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                )}
+              </span>
+              <span className="font-body font-medium text-foreground">
+                {opt.label}
+              </span>
             </label>
           </li>
         ))}
       </ul>
       {selected && (
-        <p
-          className="text-sm text-foreground/70 transition-opacity duration-300"
+        <div
+          className="rounded-2xl border border-lavender/30 bg-lavender/10 px-4 py-3 text-center"
           aria-live="polite"
         >
-          Tahmini haftalık süre: ~{weeklyMinutes} dk
-        </p>
+          <p className="text-sm font-medium text-primary">
+            Tahmini haftalık süre
+          </p>
+          <p className="mt-0.5 text-2xl font-heading font-semibold text-foreground">
+            ~{weeklyMinutes} dakika
+          </p>
+        </div>
       )}
     </div>
   );

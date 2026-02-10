@@ -22,35 +22,46 @@ export function Step8PlanReveal({
   const week1 = plan.days.slice(0, 7);
 
   return (
-    <div className="space-y-4 pb-2">
-      <h3 className="font-heading text-lg font-semibold text-foreground leading-tight">
-        {plan.title}
-      </h3>
-      <p className="text-sm text-foreground/80 leading-relaxed">
-        {personalSentence}
+    <div className="space-y-5 pb-2">
+      {/* Badge */}
+      <p className="text-xs font-semibold uppercase tracking-widest text-primary/80">
+        Sana özel
       </p>
 
-      <div>
-        <p className="mb-2 text-xs font-medium uppercase tracking-wide text-foreground/60">
-          Hafta 1 (Gün 1–7)
+      {/* Title — reveal animation */}
+      <h3 className="font-heading text-xl font-bold leading-tight text-foreground animate-[plan-reveal-title_0.6s_var(--ease-spiritual)_forwards] md:text-2xl">
+        {plan.title}
+      </h3>
+
+      {/* Personal sentence — quote style */}
+      <div className="border-l-4 border-primary/40 bg-lavender/10 pl-4 pr-3 py-3 rounded-r-xl animate-[plan-reveal-line_0.5s_var(--ease-spiritual)_forwards]">
+        <p className="text-sm text-foreground/85 leading-relaxed italic">
+          {personalSentence}
         </p>
-        <ul className="space-y-1.5 text-sm" aria-label="İlk 7 gün">
-          {week1.map((d) => (
+      </div>
+
+      {/* Week 1 */}
+      <div>
+        <p className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-foreground/60">
+          Hafta 1 · Gün 1–7
+        </p>
+        <ul className="space-y-2 text-sm" aria-label="İlk 7 gün">
+          {week1.map((d, i) => (
             <li
               key={d.day}
-              className="flex items-center gap-2 text-foreground/85"
+              className="flex items-center gap-3 rounded-xl border border-lavender/20 bg-white/60 px-3 py-2.5 text-foreground/85 animate-[plan-reveal-line_0.45s_var(--ease-spiritual)_forwards]"
+              style={{ animationDelay: `${i * 50}ms` }}
             >
               <span
-                className="shrink-0 text-base opacity-70"
-                aria-label="Kilitli"
-                title="Üyelikle açılır"
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-lavender/20 text-xs font-semibold text-primary"
+                aria-hidden
               >
                 🔒
               </span>
-              <span className="min-w-0 flex-1 truncate">
+              <span className="min-w-0 flex-1 truncate font-medium">
                 Gün {d.day}: {d.title}
               </span>
-              <span className="shrink-0 text-xs text-foreground/60">
+              <span className="shrink-0 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
                 {Math.round(d.durationSec / 60)} dk
               </span>
             </li>
@@ -58,39 +69,42 @@ export function Step8PlanReveal({
         </ul>
       </div>
 
-      <details className="rounded-xl border border-lavender/30 bg-lavender/5 px-4 py-3">
-        <summary className="cursor-pointer list-none text-sm font-medium text-foreground/80">
+      {/* Week 2 teaser */}
+      <details className="group rounded-2xl border-2 border-dashed border-lavender/40 bg-lavender/5 px-4 py-3">
+        <summary className="cursor-pointer list-none text-sm font-medium text-foreground/80 transition-colors hover:text-primary">
           + 7 gün daha (üyelikle açılır)
         </summary>
       </details>
 
+      {/* Chips — premium pills */}
       <div className="flex flex-wrap gap-2">
         {(plan.chips ?? plan.painChips).slice(0, 8).map((chip) => (
           <span
             key={chip}
-            className="rounded-full bg-lavender/30 px-3 py-1 text-xs font-medium text-primary"
+            className="rounded-full border border-primary/15 bg-gradient-to-r from-lavender/25 to-lavender/10 px-3.5 py-1.5 text-xs font-semibold text-primary shadow-sm"
           >
             {chip}
           </span>
         ))}
       </div>
 
-      <p className="text-xs text-foreground/60 italic">
+      <p className="text-xs text-foreground/55 italic">
         Planın tercihlerine göre değişir. Tam erişim üyelikle açılır.
       </p>
 
-      <div className="flex flex-col gap-2 pt-2">
+      {/* CTAs */}
+      <div className="flex flex-col gap-3 pt-2">
         <button
           type="button"
           onClick={onOpenPlan}
-          className="w-full rounded-full bg-gradient-to-r from-primary to-primary-light py-3 font-medium text-white shadow-lg transition-all hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-lavender focus:ring-offset-2"
+          className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-r from-primary via-primary-light to-primary py-4 font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         >
-          Planımı Aç
+          <span className="relative z-10">Planımı Aç</span>
         </button>
         <a
           href="/pratikler"
           onClick={onBrowseCatalog}
-          className="text-center text-sm text-primary underline underline-offset-2 hover:no-underline"
+          className="text-center text-sm font-medium text-primary underline underline-offset-2 transition-colors hover:no-underline hover:text-primary-light"
         >
           Kataloğu incele
         </a>
@@ -98,7 +112,7 @@ export function Step8PlanReveal({
           <button
             type="button"
             onClick={onReset}
-            className="text-sm text-foreground/60 hover:text-foreground underline underline-offset-2"
+            className="text-sm text-foreground/55 hover:text-foreground underline underline-offset-2 transition-colors"
           >
             Planı yeniden oluştur
           </button>

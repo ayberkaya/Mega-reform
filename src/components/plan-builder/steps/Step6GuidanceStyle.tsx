@@ -19,10 +19,11 @@ export function Step6GuidanceStyle({ selected, onChange }: Step6GuidanceStylePro
         <li key={opt.id}>
           <label
             className={cn(
-              "flex cursor-pointer items-center gap-4 rounded-xl border px-4 py-3.5 transition-all duration-200",
+              "relative flex cursor-pointer items-center gap-4 rounded-2xl border-2 px-4 py-3.5 transition-all duration-300",
+              "hover:border-lavender/50 hover:bg-lavender/5",
               selected === opt.id
-                ? "border-primary bg-lavender/20"
-                : "border-lavender/30 hover:border-lavender/60"
+                ? "border-primary bg-gradient-to-br from-lavender/25 to-lavender/5 shadow-md ring-2 ring-primary/20"
+                : "border-lavender/25 bg-white/80"
             )}
           >
             <input
@@ -35,10 +36,24 @@ export function Step6GuidanceStyle({ selected, onChange }: Step6GuidanceStylePro
               aria-label={opt.label}
             />
             <span
-              className="h-10 w-10 shrink-0 rounded-full bg-foreground/10"
+              className={cn(
+                "flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-all",
+                selected === opt.id
+                  ? "bg-primary/20 ring-2 ring-primary/40"
+                  : "bg-foreground/10"
+              )}
               aria-hidden
-            />
-            <span className="font-body text-foreground">{opt.label}</span>
+            >
+              <span
+                className={cn(
+                  "h-6 w-6 rounded-full border-2 border-foreground/30",
+                  selected === opt.id && "border-primary bg-primary/30"
+                )}
+              />
+            </span>
+            <span className="font-body font-medium text-foreground">
+              {opt.label}
+            </span>
           </label>
         </li>
       ))}
