@@ -41,7 +41,7 @@ export function PlanCard({
           variant="gold"
           className="absolute -top-3 left-1/2 -translate-x-1/2 px-4"
         >
-          En Populer
+          En popüler
         </Badge>
       )}
 
