@@ -2,6 +2,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Copy `.env.example` to `.env.local` and fill in the values. For the **chatbot** (ruhsal rehber):
+
+- **GEMINI_API_KEY**: [Google AI Studio](https://aistudio.google.com/apikey). Key olmadan chatbot demo yanıt verir.
+- **GEMINI_CHATBOT_MODEL** (opsiyonel): Varsayılan `gemini-2.0-flash`. Daha güçlü için `gemini-2.5-pro` kullanılabilir.
+
 First, run the development server:
 
 ```bash

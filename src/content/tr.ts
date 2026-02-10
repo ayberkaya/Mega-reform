@@ -69,6 +69,7 @@ export const tr = {
     newsletterCta: "Abone Ol",
   },
   chatbot: {
+    buttonLabel: "Rehberinle sohbet et",
     greeting:
       "Merhaba, hoşgeldiniz. Bugün kendinizi nasıl hissediyorsunuz? İç dünyanızda neler oluyor?",
     placeholder: "İçinizdeki duyguları paylaşabilirsiniz...",

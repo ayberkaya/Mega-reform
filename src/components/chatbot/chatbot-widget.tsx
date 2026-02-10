@@ -109,29 +109,47 @@ export function ChatbotWidget() {
 
   return (
     <>
-      {/* Floating trigger button */}
-      <motion.button
-        type="button"
-        onClick={toggle}
+      {/* Floating trigger button – eye-catching so visitors want to click */}
+      <motion.div
         className={cn(
-          "fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300",
-          "bg-gradient-to-r from-primary to-primary-light text-white",
-          "hover:shadow-2xl hover:scale-105",
-          isOpen && "scale-0 opacity-0"
+          "group fixed bottom-6 right-6 z-40 flex items-center",
+          isOpen && "pointer-events-none"
         )}
-        animate={{ scale: isOpen ? 0 : 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label="Ruhsal rehberle sohbet"
+        animate={{ opacity: isOpen ? 0 : 1, scale: isOpen ? 0 : 1 }}
+        transition={{ duration: 0.2 }}
       >
-        {/* Breathing ring */}
-        <span className="absolute inset-0 rounded-full animate-breathe border-2 border-lavender/30" />
-        <svg className="w-6 h-6" viewBox="0 0 32 32" fill="currentColor">
-          <path d="M16 4c-2 4-6 8-6 12s2.7 7.3 6 8c3.3-.7 6-4 6-8s-4-8-6-12z" />
-          <path d="M16 4c-4 3-10 6-12 10 2 4 6 6 10 7-2-3-3.5-8-2-13 1-2 2.5-3 4-4z" opacity="0.6" />
-          <path d="M16 4c4 3 10 6 12 10-2 4-6 6-10 7 2-3 3.5-8 2-13-1-2-2.5-3-4-4z" opacity="0.6" />
-        </svg>
-      </motion.button>
+        {/* Label: appears on hover to invite click */}
+        <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-primary px-4 py-2 text-sm font-medium text-white shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {tr.chatbot.buttonLabel}
+        </span>
+
+        <motion.button
+          type="button"
+          onClick={toggle}
+          className={cn(
+            "group relative w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300",
+            "bg-gradient-to-r from-primary via-primary-light to-primary text-white",
+            "shadow-xl hover:shadow-2xl hover:scale-105",
+            "ring-4 ring-white/20 ring-offset-2 ring-offset-background",
+            "animate-chatbot-glow",
+            isOpen && "scale-0 opacity-0"
+          )}
+          animate={{ scale: isOpen ? 0 : 1 }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Ruhsal rehberle sohbet"
+        >
+          {/* Outer breathing ring – more visible */}
+          <span className="absolute inset-0 rounded-full animate-breathe border-2 border-white/40" />
+          {/* Inner soft ring */}
+          <span className="absolute inset-1 rounded-full border border-white/20" />
+          <svg className="w-7 h-7 relative z-10 drop-shadow-sm" viewBox="0 0 32 32" fill="currentColor">
+            <path d="M16 4c-2 4-6 8-6 12s2.7 7.3 6 8c3.3-.7 6-4 6-8s-4-8-6-12z" />
+            <path d="M16 4c-4 3-10 6-12 10 2 4 6 6 10 7-2-3-3.5-8-2-13 1-2 2.5-3 4-4z" opacity="0.6" />
+            <path d="M16 4c4 3 10 6 12 10-2 4-6 6-10 7 2-3 3.5-8 2-13-1-2-2.5-3-4-4z" opacity="0.6" />
+          </svg>
+        </motion.button>
+      </motion.div>
 
       {/* Chat panel */}
       <AnimatePresence>
