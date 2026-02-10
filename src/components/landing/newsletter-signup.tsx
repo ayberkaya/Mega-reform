@@ -37,6 +37,14 @@ export function NewsletterSignup() {
           <p className="text-xs text-foreground/40 mt-4">
             Gizliliginize saygı duyuyoruz. Istediginiz zaman aboneliginizi iptal edebilirsiniz.
           </p>
+          <p className="mt-6">
+            <Link
+              href="/iceride-ne-var"
+              className="text-primary font-medium text-sm hover:underline underline-offset-2"
+            >
+              İçeride ne var?
+            </Link>
+          </p>
         </ScrollReveal>
       </div>
     </section>

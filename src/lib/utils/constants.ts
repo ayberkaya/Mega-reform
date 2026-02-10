@@ -65,10 +65,9 @@ export const SUBSCRIPTION_PLANS = [
   },
 ] as const;
 
-/** Header nav: reduced set; rest in footer */
 export const NAV_LINKS = [
-  { href: "/iceride-ne-var", label: "İçeride Ne Var?" },
-  { href: "/pratikler", label: "Pratikler" },
-  { href: "/uzmanlar", label: "Rehberler" },
-  { href: "/uyelik", label: "Üyelik" },
+  { href: "/uzmanlar", label: "Uzmanlar" },
+  { href: "/makaleler", label: "Makaleler" },
+  { href: "/kurslar", label: "Kurslar" },
+  { href: "/videolar", label: "Videolar" },
 ] as const;

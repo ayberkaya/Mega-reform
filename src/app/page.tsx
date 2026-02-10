@@ -8,6 +8,7 @@ import { LatestArticles } from "@/components/landing/latest-articles";
 import { CoursePreview } from "@/components/landing/course-preview";
 import { Testimonials } from "@/components/landing/testimonials";
 import { SubscriptionCta } from "@/components/landing/subscription-cta";
+import { WhatsInsideSection } from "@/components/landing/whats-inside-section";
 import { NewsletterSignup } from "@/components/landing/newsletter-signup";
 import { ChatbotWidget } from "@/components/chatbot/chatbot-widget";
 import { prisma } from "@/lib/prisma";
@@ -48,6 +49,7 @@ export default async function Home() {
         <CoursePreview />
         <Testimonials />
         <SubscriptionCta />
+        <WhatsInsideSection />
         <NewsletterSignup />
       </main>
       <Footer />

@@ -47,6 +47,14 @@ export function SubscriptionCta() {
             </span>
           </div>
           <PrimaryPlanCta variant="gold" size="xl" />
+          <p className="mt-6">
+            <Link
+              href="/iceride-ne-var"
+              className="text-white/70 hover:text-white text-sm font-medium underline underline-offset-2 transition-colors"
+            >
+              İçeride ne var? →
+            </Link>
+          </p>
         </ScrollReveal>
       </div>
     </section>
