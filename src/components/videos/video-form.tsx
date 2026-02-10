@@ -160,7 +160,7 @@ export function VideoForm({
             className="h-4 w-4 rounded border-lavender/30 text-primary focus:ring-primary"
           />
           <label htmlFor="featured" className="text-sm text-foreground/80">
-            One cikan
+            Öne çıkan
           </label>
         </div>
       </div>
@@ -171,7 +171,7 @@ export function VideoForm({
       )}
       <div className="flex gap-3">
         <Button type="submit" variant="primary" disabled={pending}>
-          {pending ? "Kaydediliyor..." : mode === "create" ? "Olustur" : "Guncelle"}
+          {pending ? "Kaydediliyor..." : mode === "create" ? "Oluştur" : "Güncelle"}
         </Button>
         <Button
           type="button"

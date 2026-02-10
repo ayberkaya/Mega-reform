@@ -18,7 +18,7 @@ export default async function AdminVideolarPage() {
             Videolar
           </h1>
           <p className="text-foreground/60 mt-1">
-            Site videolarini yonetin. One cikan videolar anasayfada gorunur.
+            Site videolarını yönetin. Öne çıkan videolar anasayfada görünür.
           </p>
         </div>
         <Link href="/yonetim/videolar/yeni">
@@ -30,7 +30,7 @@ export default async function AdminVideolarPage() {
         <Card>
           <CardContent className="p-12 text-center">
             <p className="text-foreground/50 mb-4">
-              Henuz video eklenmemis.
+              Henüz video eklenmemiş.
             </p>
             <Link href="/yonetim/videolar/yeni">
               <Button variant="primary">Ilk videoyu ekle</Button>
@@ -45,7 +45,7 @@ export default async function AdminVideolarPage() {
                 <th className="px-4 py-3 font-semibold text-primary">Baslik</th>
                 <th className="px-4 py-3 font-semibold text-primary">Kategori</th>
                 <th className="px-4 py-3 font-semibold text-primary">Durum</th>
-                <th className="px-4 py-3 font-semibold text-primary">One cikan</th>
+                <th className="px-4 py-3 font-semibold text-primary">Öne çıkan</th>
                 <th className="px-4 py-3 font-semibold text-primary">Sira</th>
                 <th className="px-4 py-3 font-semibold text-primary">Islem</th>
               </tr>

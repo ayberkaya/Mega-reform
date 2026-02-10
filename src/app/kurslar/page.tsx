@@ -17,10 +17,10 @@ const DEMO_COURSES = [
     slug: "meditasyona-giris",
     title: "Meditasyona Giriş: 21 Günlük Program",
     description:
-      "Meditasyonu hayatinizin bir parcasi haline getirmek icin adim adim ilerleyeceginiz kapsamli bir program.",
+      "Meditasyonu hayatınızın bir parçası haline getirmek için adım adım ilerleyeceğiniz kapsamlı bir program.",
     price: null,
     isFree: true,
-    level: "Baslangic",
+    level: "Başlangıç",
     lessonCount: 21,
     duration: 315,
     enrollmentCount: 1247,
@@ -33,10 +33,10 @@ const DEMO_COURSES = [
     slug: "hatha-yoga-temelleri",
     title: "Hatha Yoga Temelleri",
     description:
-      "Yoga pratiginizi guvenli ve dogru bir sekilde baslatirsaniz. Temel asanalar ve nefes teknikleri.",
+      "Yoga pratiğinizi güvenli ve doğru bir şekilde başlatırsanız. Temel asanalar ve nefes teknikleri.",
     price: 149,
     isFree: false,
-    level: "Baslangic",
+    level: "Başlangıç",
     lessonCount: 16,
     duration: 480,
     enrollmentCount: 856,
@@ -49,7 +49,7 @@ const DEMO_COURSES = [
     slug: "tarot-okuma-sanati",
     title: "Tarot Okuma Sanati",
     description:
-      "Tarot kartlarinin dilini ogrenin ve kendi okumalarinizi yapmaya baslayin.",
+      "Tarot kartlarının dilini öğrenin ve kendi okumalarınızı yapmaya başlayın.",
     price: 199,
     isFree: false,
     level: "Orta",
@@ -63,12 +63,12 @@ const DEMO_COURSES = [
   },
   {
     slug: "ruhsal-farkindalik",
-    title: "Ruhsal Farkindalik ve Ic Yolculuk",
+    title: "Ruhsal Farkındalık ve İç Yolculuk",
     description:
-      "Kendinizi derinlemesine kesfetmeniz icin hazirlanmis kapsamli bir ruhsal gelisim programi.",
+      "Kendinizi derinlemesine keşfetmeniz için hazırlanmış kapsamlı bir ruhsal gelişim programı.",
     price: 249,
     isFree: false,
-    level: "Ileri",
+    level: "İleri",
     lessonCount: 24,
     duration: 720,
     enrollmentCount: 318,
@@ -81,10 +81,10 @@ const DEMO_COURSES = [
     slug: "nefes-terapi-programi",
     title: "Nefes Terapi Programi",
     description:
-      "Farkli nefes tekniklerini ogrenin ve gunluk hayatinizda etkili bir sekilde uygulayin.",
+      "Farklı nefes tekniklerini öğrenin ve günlük hayatınızda etkili bir şekilde uygulayın.",
     price: 99,
     isFree: false,
-    level: "Baslangic",
+    level: "Başlangıç",
     lessonCount: 10,
     duration: 150,
     enrollmentCount: 567,
@@ -95,12 +95,12 @@ const DEMO_COURSES = [
   },
   {
     slug: "ileri-mindfulness",
-    title: "Ileri Seviye Mindfulness",
+    title: "İleri Seviye Mindfulness",
     description:
-      "Mindfulness pratiginizi derinlestirin. Gunluk farkindalik, vucud taramasi ve sevgi dolu sefkat meditasyonlari.",
+      "Mindfulness pratiğinizi derinleştirin. Günlük farkındalık, vücut taraması ve sevgi dolu şefkat meditasyonları.",
     price: 179,
     isFree: false,
-    level: "Ileri",
+    level: "İleri",
     lessonCount: 18,
     duration: 540,
     enrollmentCount: 234,
@@ -140,14 +140,14 @@ export default function KurslarPage() {
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              Ana sayfaya don
+              Ana sayfaya dön
             </Link>
             <div className="text-center">
               <h1 className="font-heading text-4xl font-bold text-white md:text-5xl lg:text-6xl mb-4">
                 Kurslar
               </h1>
               <p className="mx-auto max-w-2xl text-lg text-white/60 md:text-xl">
-                Uzman rehberler esliginde kendi hizinizda ilerleyin. Meditasyon, yoga ve ruhsal gelisim kurslarini kesfedin.
+                Uzman rehberler eşliğinde kendi hızınızda ilerleyin. Meditasyon, yoga ve ruhsal gelişim kurslarını keşfedin.
               </p>
             </div>
           </div>

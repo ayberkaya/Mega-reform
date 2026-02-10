@@ -30,7 +30,7 @@ export default async function DashboardPage() {
                 </svg>
               </div>
               <div>
-                <p className="text-2xl font-heading font-bold text-primary">Ucretsiz</p>
+                <p className="text-2xl font-heading font-bold text-primary">Ücretsiz</p>
                 <p className="text-xs text-foreground/50">Mevcut Plan</p>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default async function DashboardPage() {
         <Card className="hover:shadow-xl">
           <CardHeader>
             <h3 className="font-heading text-xl font-bold text-primary">
-              One Cikan Kurslar
+              Öne Çıkan Kurslar
             </h3>
           </CardHeader>
           <CardContent>
@@ -118,7 +118,7 @@ export default async function DashboardPage() {
             </p>
             <Link href="/kurslar">
               <Button variant="primary" size="sm">
-                Kurslari Kesfedin
+                Kursları Keşfedin
               </Button>
             </Link>
           </CardContent>
@@ -133,7 +133,7 @@ export default async function DashboardPage() {
               <Badge className="bg-gold/20 text-gold border-none">
                 Mevcut Plan
               </Badge>
-              <span className="font-heading text-lg font-bold">Ucretsiz</span>
+              <span className="font-heading text-lg font-bold">Ücretsiz</span>
             </div>
             <p className="text-white/70 text-sm">
               Ayda 3 makale erişimi. Daha fazlası için planınızı yükseltin.

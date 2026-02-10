@@ -102,7 +102,7 @@ export function ArticleCard({
           {isFeatured && (
             <div className="absolute right-3 top-3">
               <Badge variant="gold" className="shadow-sm">
-                One Cikan
+                Öne Çıkan
               </Badge>
             </div>
           )}

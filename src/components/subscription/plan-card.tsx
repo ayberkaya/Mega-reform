@@ -55,7 +55,7 @@ export function PlanCard({
       <div className="mb-6">
         {price === 0 ? (
           <span className="font-heading text-4xl font-bold text-primary">
-            Ucretsiz
+            Ücretsiz
           </span>
         ) : (
           <div className="flex items-baseline gap-1">
@@ -99,7 +99,7 @@ export function PlanCard({
           className="w-full"
           onClick={() => onSelect?.(id)}
         >
-          {price === 0 ? "Ucretsiz Basla" : "Bu Plani Sec"}
+          {price === 0 ? "Ücretsiz Başla" : "Bu Planı Seç"}
         </Button>
       )}
     </div>

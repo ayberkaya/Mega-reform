@@ -35,16 +35,16 @@ interface CourseListingClientProps {
 }
 
 const LEVELS = [
-  { label: "Tumu", value: null },
-  { label: "Baslangic", value: "Baslangic" },
+  { label: "Tümü", value: null },
+  { label: "Başlangıç", value: "Başlangıç" },
   { label: "Orta", value: "Orta" },
-  { label: "Ileri", value: "Ileri" },
+  { label: "İleri", value: "İleri" },
 ];
 
 const PRICE_FILTERS = [
-  { label: "Tumu", value: null },
-  { label: "Ucretsiz", value: "free" },
-  { label: "Ucretli", value: "paid" },
+  { label: "Tümü", value: null },
+  { label: "Ücretsiz", value: "free" },
+  { label: "Ücretli", value: "paid" },
 ];
 
 export function CourseListingClient({ courses, categories }: CourseListingClientProps) {

@@ -26,7 +26,7 @@ export function Footer() {
               {SITE_NAME}
             </h3>
             <p className="text-white/60 text-sm leading-relaxed mb-6">
-              Meditasyon, yoga, tarot ve ruhsal gelisim icin uzman rehberlik
+              Meditasyon, yoga, tarot ve ruhsal gelişim için uzman rehberlik
               platformu. İç huzurunuzu keşfetmeniz için yanınızdayız.
             </p>
           </div>

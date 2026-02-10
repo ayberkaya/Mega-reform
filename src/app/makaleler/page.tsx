@@ -14,20 +14,20 @@ export const metadata: Metadata = {
 const DEMO_ARTICLES = [
   {
     slug: "meditasyona-baslama-rehberi",
-    title: "Meditasyona Baslamak Icin 7 Temel Adim",
+    title: "Meditasyona Başlamak İçin 7 Temel Adım",
     excerpt:
-      "Meditasyona yeni baslayanlar icin pratik ipuclari ve gunluk rutininize nasil dahil edebileceginizi kesfedeceksiniz.",
+      "Meditasyona yeni başlayanlar için pratik ipuçları ve günlük rutininize nasıl dahil edebileceğinizi keşfedeceksiniz.",
     readTime: 8,
     publishedAt: "2025-12-15",
     category: { name: "Meditasyon", slug: "meditasyon", color: "#9DC183" },
-    expert: { name: "Ayse Nur Yilmaz", slug: "ayse-nur-yilmaz" },
+    expert: { name: "Ayşe Nur Yılmaz", slug: "ayse-nur-yilmaz" },
     isFeatured: true,
   },
   {
     slug: "yoga-nefes-teknikleri",
-    title: "Yogada Nefes Tekniklerinin Onemi",
+    title: "Yogada Nefes Tekniklerinin Önemi",
     excerpt:
-      "Pranayama ve diger nefes tekniklerini yoga pratiginize nasil entegre edebileceginizi ogrenin.",
+      "Pranayama ve diğer nefes tekniklerini yoga pratiğinize nasıl entegre edebileceğinizi öğrenin.",
     readTime: 6,
     publishedAt: "2025-12-10",
     category: { name: "Yoga", slug: "yoga", color: "#D4AF37" },
@@ -36,9 +36,9 @@ const DEMO_ARTICLES = [
   },
   {
     slug: "tarot-kartlari-anlami",
-    title: "Buyuk Arkana: Tarot Kartlarinin Derin Anlamlari",
+    title: "Büyük Arkana: Tarot Kartlarının Derin Anlamları",
     excerpt:
-      "22 Buyuk Arkana kartinin sembolik anlamlarini ve hayatinizdaki yansimalarini kesfedeceksiniz.",
+      "22 Büyük Arkana kartının sembolik anlamlarını ve hayatınızdaki yansımalarını keşfedeceksiniz.",
     readTime: 12,
     publishedAt: "2025-12-05",
     category: { name: "Tarot", slug: "tarot", color: "#4A2D7A" },
@@ -47,9 +47,9 @@ const DEMO_ARTICLES = [
   },
   {
     slug: "ruhsal-gelisim-yolculugu",
-    title: "Ruhsal Gelisim Yolculugunda Ilk Adimlar",
+    title: "Ruhsal Gelişim Yolculuğunda İlk Adımlar",
     excerpt:
-      "Kendinizi tanimaya baslamanin ve ic sesinizi dinlemenin yollari uzerine kapsamli bir rehber.",
+      "Kendinizi tanımaya başlamanın ve iç sesinizi dinlemenin yolları üzerine kapsamlı bir rehber.",
     readTime: 10,
     publishedAt: "2025-11-28",
     category: {
@@ -57,25 +57,25 @@ const DEMO_ARTICLES = [
       slug: "ruhsal-gelisim",
       color: "#D3D3FF",
     },
-    expert: { name: "Ahmet Baris Ozturk", slug: "ahmet-baris-ozturk" },
+    expert: { name: "Ahmet Barış Öztürk", slug: "ahmet-baris-ozturk" },
     isFeatured: true,
   },
   {
     slug: "mindfulness-gunluk-yasam",
-    title: "Gunluk Yasamda Mindfulness Pratigi",
+    title: "Günlük Yaşamda Mindfulness Pratiği",
     excerpt:
-      "Is, yemek ve yuruyus gibi gunluk aktivitelerde farkindalik pratiginizi nasil gelistirebilirsiniz.",
+      "İş, yemek ve yürüyüş gibi günlük aktivitelerde farkındalık pratiğinizi nasıl geliştirebilirsiniz.",
     readTime: 7,
     publishedAt: "2025-11-20",
     category: { name: "Mindfulness", slug: "mindfulness", color: "#E5C85A" },
-    expert: { name: "Ali Riza Celik", slug: "ali-riza-celik" },
+    expert: { name: "Ali Rıza Çelik", slug: "ali-riza-celik" },
     isFeatured: false,
   },
   {
     slug: "nefes-calismalari-stres",
-    title: "Stresle Basa Cikmak Icin 5 Nefes Calismasi",
+    title: "Stresle Başa Çıkmak İçin 5 Nefes Çalışması",
     excerpt:
-      "Gunluk hayatta karsilastiginiz stres anlarinda uygulayabileceginiz etkili nefes teknikleri.",
+      "Günlük hayatta karşılaştığınız stres anlarında uygulayabileceğiniz etkili nefes teknikleri.",
     readTime: 5,
     publishedAt: "2025-11-15",
     category: {

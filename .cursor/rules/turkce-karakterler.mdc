@@ -1,0 +1,46 @@
+---
+description: Türkçe metinlerde doğru karakter kullanımı
+globs: ["**/*.tsx", "**/*.ts", "**/*.md", "**/content/**"]
+---
+
+# Türkçe karakter kuralları
+
+Tüm kullanıcıya görünen Türkçe metinlerde **doğru Türkçe karakterler** kullanılmalıdır. ASCII karşılıklar kullanılmamalı.
+
+## Zorunlu karakterler
+
+| Yanlış | Doğru |
+|--------|--------|
+| i (ince, kelime içi) | i veya ı (bağlama göre) |
+| icin | için |
+| degil | değil |
+| ucretsiz | ücretsiz |
+| gunluk | günlük |
+| ogren, ogreneceksiniz | öğren, öğreneceksiniz |
+| donusum | dönüşüm |
+| kesfet | keşfet |
+| baslangic | başlangıç |
+| adim | adım |
+| guvenli, dogru | güvenli, doğru |
+| olustur | oluştur |
+| yonet | yönet |
+| farkindalik | farkındalık |
+| Henuz | Henüz |
+| Egitmen | Eğitmen |
+| Danismani | Danışmanı |
+| One Cikan | Öne Çıkan |
+| Ileri | İleri (büyük İ) |
+| Turkce | Türkçe |
+| Kisaca | Kısaca |
+| sikca | sıkça |
+| cocuk, Golge | çocuk, Gölge |
+| sifa, calisma | şifa, çalışma |
+| yontem, acilim | yöntem, açılım |
+
+## İstisna: URL ve slug
+
+URL path'leri ve `slug` alanları (SEO ve mevcut linkler için) **değiştirilmemelidir**. Örn: `/sikca-sorulan-sorular`, `ruhsal-farkindalik` olduğu gibi kalır. Sadece kullanıcıya gösterilen etiket/metin doğru karakterle yazılır (örn. "Sıkça Sorulan Sorular").
+
+## Kontrol
+
+Yeni Türkçe metin eklerken: ç, ğ, ı, ö, ş, ü, İ (noktalı büyük I) karakterlerinin doğru kullanıldığından emin ol.

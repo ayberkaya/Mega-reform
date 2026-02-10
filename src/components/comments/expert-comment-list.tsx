@@ -68,7 +68,7 @@ export function ExpertCommentList({ comments }: ExpertCommentListProps) {
         <div className="rounded-2xl border border-lavender/20 bg-white/50 p-12 text-center">
           <p className="text-foreground/50">
             {filter === "all"
-              ? "Henuz yorum yok."
+              ? "Henüz yorum yok."
               : filter === "unreplied"
                 ? "Yanitlanmamis yorum yok."
                 : "Yanitlanmis yorum yok."}

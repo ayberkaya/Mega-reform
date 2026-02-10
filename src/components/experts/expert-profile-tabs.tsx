@@ -58,7 +58,7 @@ interface ExpertProfileTabsProps {
 type TabKey = "hakkinda" | "makaleler" | "kurslar" | "yorumlar";
 
 const tabs: { key: TabKey; label: string }[] = [
-  { key: "hakkinda", label: "Hakkinda" },
+  { key: "hakkinda", label: "Hakkında" },
   { key: "makaleler", label: "Makaleler" },
   { key: "kurslar", label: "Kurslar" },
   { key: "yorumlar", label: "Yorumlar" },
@@ -81,11 +81,11 @@ const panelVariants = {
 function levelLabel(level: string | null | undefined): string {
   switch (level) {
     case "beginner":
-      return "Baslangic";
+      return "Başlangıç";
     case "intermediate":
       return "Orta";
     case "advanced":
-      return "Ileri";
+      return "İleri";
     default:
       return level ?? "Genel";
   }
@@ -200,7 +200,7 @@ export function ExpertProfileTabs({
 
 function HakkindaPanel({ content }: { content?: string | null }) {
   if (!content) {
-    return <EmptyState message="Henuz hakkinda bilgisi eklenmemis." />;
+    return <EmptyState message="Henüz hakkında bilgisi eklenmemiş." />;
   }
 
   return (
@@ -218,7 +218,7 @@ function MakalelerPanel({
   articles: ExpertProfileTabsProps["articles"];
 }) {
   if (articles.length === 0) {
-    return <EmptyState message="Henuz makale yayinlanmamis." />;
+    return <EmptyState message="Henüz makale yayınlanmamış." />;
   }
 
   return (
@@ -273,7 +273,7 @@ function KurslarPanel({
   courses: ExpertProfileTabsProps["courses"];
 }) {
   if (courses.length === 0) {
-    return <EmptyState message="Henuz kurs eklenmemis." />;
+    return <EmptyState message="Henüz kurs eklenmemiş." />;
   }
 
   return (
@@ -312,7 +312,7 @@ function KurslarPanel({
                   {course.lessonCount} ders
                 </span>
                 <span className="text-xs text-foreground/40">
-                  {course.enrollmentCount} katilimci
+                  {course.enrollmentCount} katılımcı
                 </span>
               </div>
             </CardContent>
@@ -342,10 +342,10 @@ function YorumlarPanel({
         <CommentForm expertId={expertId} onSuccess={onCommentSuccess} />
       )}
       {reviews.length === 0 && !canComment ? (
-        <EmptyState message="Henuz yorum yapilmamis." />
+        <EmptyState message="Henüz yorum yapılmamış." />
       ) : reviews.length === 0 ? (
         <p className="text-sm text-foreground/50">
-          Yorumunuz onaylandiktan sonra burada gorunecektir.
+          Yorumunuz onaylandıktan sonra burada görünecektir.
         </p>
       ) : null}
       {reviews.length > 0 &&

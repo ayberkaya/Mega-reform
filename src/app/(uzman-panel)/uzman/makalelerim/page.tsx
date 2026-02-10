@@ -50,7 +50,7 @@ export default function ExpertArticlesPage() {
             </svg>
           </div>
           <h3 className="font-heading text-xl font-bold text-primary mb-2">
-            Henuz makale yazilmamis
+            Henüz makale yazılmamış
           </h3>
           <p className="text-foreground/60 mb-6 max-w-md mx-auto">
             Bilgi ve deneyimlerinizi paylasarak toplulugumuza ilham verin. Ilk makalenizi simdi yazin.

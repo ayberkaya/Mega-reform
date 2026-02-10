@@ -23,13 +23,13 @@ export default async function ExpertCommentsPage() {
             Yorumlar
           </h1>
           <p className="text-foreground/60 mt-1">
-            Profilinize yapilan yorumlari goruntuleyip yanitlayin
+            Profilinize yapılan yorumları görüntüleyip yanıtlayın
           </p>
         </div>
         <Card>
           <CardContent className="p-12 text-center">
             <p className="text-foreground/60">
-              Yorumlari gormek icin once uzman profilinizi olusturmalisiniz.
+              Yorumları görmek için önce uzman profilinizi oluşturmalısınız.
             </p>
           </CardContent>
         </Card>
@@ -61,7 +61,7 @@ export default async function ExpertCommentsPage() {
           Yorumlar
         </h1>
         <p className="text-foreground/60 mt-1">
-          Profilinize yapilan yorumlari goruntuleyip yanitlayin
+          Profilinize yapılan yorumları görüntüleyip yanıtlayın
         </p>
       </div>
 

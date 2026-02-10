@@ -11,6 +11,10 @@ import { StarRating } from "@/components/ui/star-rating";
 import { Button } from "@/components/ui/button";
 import { ExpertProfileTabs } from "@/components/experts/expert-profile-tabs";
 import { DEMO_EXPERTS } from "@/data/demo-experts";
+import {
+  getTemplateCoursesForExpert,
+  mapTemplateCoursesToTabShape,
+} from "@/data/template-courses-for-experts";
 
 const DEMO_REVIEWS = [
   {
@@ -23,7 +27,7 @@ const DEMO_REVIEWS = [
     replies: [
       {
         id: "reply-1",
-        content: "Guzel sozleriniz icin cok tesekkur ederim! Yolculugunuzda yanimda olmaktan mutluluk duyuyorum.",
+        content: "Güzel sözleriniz için çok teşekkür ederim! Yolculuğunuzda yanımda olmaktan mutluluk duyuyorum.",
         createdAt: new Date("2025-12-16"),
       },
     ],
@@ -31,7 +35,7 @@ const DEMO_REVIEWS = [
   {
     id: "rev-2",
     content:
-      "Ilk kez denedim ve beklentimin cok otesinde bir deneyim oldu. Kendimi cok daha iyi hissediyorum.",
+      "İlk kez denedim ve beklentimin çok ötesinde bir deneyim oldu. Kendimi çok daha iyi hissediyorum.",
     rating: 5,
     createdAt: new Date("2025-11-22"),
     user: { name: "Burak M.", image: null },
@@ -40,7 +44,7 @@ const DEMO_REVIEWS = [
   {
     id: "rev-3",
     content:
-      "Harika bir uzman! Anlattiklari cok acik ve uygulanabilir. Gunluk hayatima entegre etmeye basladim bile.",
+      "Harika bir uzman! Anlattıkları çok açık ve uygulanabilir. Günlük hayatıma entegre etmeye başladım bile.",
     rating: 4,
     createdAt: new Date("2025-10-08"),
     user: { name: "Selin T.", image: null },
@@ -225,6 +229,10 @@ export default async function ExpertDetailPage({ params }: PageProps) {
 
   const content = await getExpertContent(slug, session?.user?.id);
   const { articles, courses, reviews, expertId, hasCommented } = content;
+  const coursesToShow =
+    courses.length > 0
+      ? courses
+      : mapTemplateCoursesToTabShape(getTemplateCoursesForExpert(slug));
   const currentUserId = session?.user?.id ?? null;
 
   return (
@@ -422,7 +430,7 @@ export default async function ExpertDetailPage({ params }: PageProps) {
           <ExpertProfileTabs
             aboutContent={expert.longBio ?? null}
             articles={articles}
-            courses={courses}
+            courses={coursesToShow}
             reviews={reviews}
             expertId={expertId}
             currentUserId={currentUserId}

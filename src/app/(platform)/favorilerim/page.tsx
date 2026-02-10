@@ -15,7 +15,7 @@ export default function FavoritesPage() {
             </svg>
           </div>
           <h3 className="font-heading text-xl font-bold text-primary mb-2">
-            Henuz favori iceriginiz yok
+            Henüz favori içeriğiniz yok
           </h3>
           <p className="text-foreground/50 text-sm mb-6 max-w-md mx-auto">
             Makaleleri ve kurslari favorilerinize ekleyerek daha sonra kolayca ulasabilirsiniz.

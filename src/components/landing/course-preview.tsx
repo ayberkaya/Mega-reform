@@ -21,20 +21,20 @@ interface Course {
 
 const DEMO_COURSES: Course[] = [
   {
-    title: "Baslangic Meditasyonu: Ic Huzura Ilk Adim",
+    title: "Başlangıç Meditasyonu: İç Huzura İlk Adım",
     description:
-      "Meditasyonu hic denememis olsaniz bile bu kurs sizi adim adim ic huzurun kapisina goturecek. Gunluk 10 dakikalik pratiklerle hayatinizi donusturun.",
+      "Meditasyonu hiç denememiş olsanız bile bu kurs sizi adım adım iç huzurun kapısına götürecek. Günlük 10 dakikalık pratiklerle hayatınızı dönüştürün.",
     category: "Meditasyon",
-    level: "Baslangic",
+    level: "Başlangıç",
     lessonCount: 12,
     duration: "4 saat",
-    author: "Ayse Nur Yilmaz",
+    author: "Ayşe Nur Yılmaz",
     isFree: true,
   },
   {
     title: "Tarot ile Kendini Tanima Yolculugu",
     description:
-      "Major ve minor arkana kartlarini ogrenin, kendi kendinize okuma yapin ve evrenin mesajlarini anlayin. Derinlemesine bir ruhsal kesif deneyimi.",
+      "Major ve minor arkana kartlarını öğrenin, kendi kendinize okuma yapın ve evrenin mesajlarını anlayın. Derinlemesine bir ruhsal keşif deneyimi.",
     category: "Tarot",
     level: "Orta",
     lessonCount: 20,
@@ -118,7 +118,7 @@ export function CoursePreview() {
                     </span>
                   </div>
                   <Button variant="primary" size="md">
-                    {course.isFree ? tr.common.startNow : `Kursa Katil`}
+                    {course.isFree ? tr.common.startNow : "Kursa Katıl"}
                   </Button>
                 </div>
               </div>

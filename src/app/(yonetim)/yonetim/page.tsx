@@ -95,7 +95,7 @@ export default async function YonetimDashboardPage() {
                 href="/yonetim/yorumlar"
                 className="mt-2 block text-xs text-sage hover:underline"
               >
-                Goruntule
+                Görüntüle
               </Link>
             )}
           </CardContent>
@@ -117,7 +117,7 @@ export default async function YonetimDashboardPage() {
             href="/yonetim/yorumlar"
             className="rounded-xl border border-lavender/30 px-4 py-2 text-sm font-medium text-foreground/70 hover:bg-lavender/10 transition-colors"
           >
-            Yorumlari Yonet
+            Yorumları Yönet
           </Link>
         </div>
       </div>

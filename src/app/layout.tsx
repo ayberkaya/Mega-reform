@@ -43,13 +43,13 @@ export const metadata: Metadata = {
     siteName: "Mega Reform",
     title: "Mega Reform | Ruhsal Gelisim Platformu",
     description:
-      "Meditasyon, yoga, tarot ve ruhsal gelisim icin uzman rehberlik platformu.",
+      "Meditasyon, yoga, tarot ve ruhsal gelişim için uzman rehberlik platformu.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Mega Reform | Ruhsal Gelisim Platformu",
     description:
-      "Meditasyon, yoga, tarot ve ruhsal gelisim icin uzman rehberlik platformu.",
+      "Meditasyon, yoga, tarot ve ruhsal gelişim için uzman rehberlik platformu.",
   },
 };
 

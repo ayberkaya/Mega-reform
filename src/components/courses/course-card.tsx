@@ -26,9 +26,9 @@ interface CourseCardProps {
 }
 
 const levelConfig: Record<string, { label: string; variant: "sage" | "gold" | "primary" }> = {
-  Baslangic: { label: "Baslangic", variant: "sage" },
+  Başlangıç: { label: "Başlangıç", variant: "sage" },
   Orta: { label: "Orta", variant: "gold" },
-  Ileri: { label: "Ileri", variant: "primary" },
+  İleri: { label: "İleri", variant: "primary" },
 };
 
 export function CourseCard({
@@ -88,7 +88,7 @@ export function CourseCard({
           <div className="absolute top-3 right-3">
             {isFree ? (
               <Badge variant="sage" className="text-[11px] font-semibold shadow-sm">
-                Ucretsiz
+                Ücretsiz
               </Badge>
             ) : price != null ? (
               <Badge variant="gold" className="text-[11px] font-semibold shadow-sm">
@@ -112,7 +112,7 @@ export function CourseCard({
                     strokeWidth="1"
                   />
                 </svg>
-                One Cikan
+                Öne Çıkan
               </Badge>
             </div>
           )}
@@ -244,7 +244,7 @@ export function CourseCard({
                   strokeLinejoin="round"
                 />
               </svg>
-              <span>{enrollmentCount.toLocaleString("tr-TR")} katilimci</span>
+              <span>{enrollmentCount.toLocaleString("tr-TR")} katılımcı</span>
             </div>
           </div>
 

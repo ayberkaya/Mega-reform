@@ -37,7 +37,7 @@ export default async function ProfilePage() {
                       ? "Uzman"
                       : "Uye"}
                 </Badge>
-                <Badge variant="gold">Ucretsiz Plan</Badge>
+                <Badge variant="gold">Ücretsiz Plan</Badge>
               </div>
               <div className="mt-4">
                 <Link href="/profilim/duzenle">

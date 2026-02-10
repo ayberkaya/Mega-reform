@@ -17,36 +17,36 @@ interface Article {
 
 const DEMO_ARTICLES: Article[] = [
   {
-    title: "Gunluk Meditasyonun 7 Donusturucu Etkisi",
-    excerpt: "Meditasyonu hayatiniza dahil ettiginizde bedeninizde ve ruhunuzda gozlemleyeceginiz degisimler...",
+    title: "Günlük Meditasyonun 7 Dönüştürücü Etkisi",
+    excerpt: "Meditasyonu hayatınıza dahil ettiğinizde bedeninizde ve ruhunuzda gözlemleyeceğiniz değişimler...",
     category: "Meditasyon",
     categoryColor: "#9DC183",
-    author: "Ayse Nur Yilmaz",
-    date: "8 Subat 2026",
+    author: "Ayşe Nur Yılmaz",
+    date: "8 Şubat 2026",
   },
   {
-    title: "Tarot Kartlarini Anlamanin Ilk Adimlari",
-    excerpt: "Tarot kartlarinin gizemli dunyasina adim atarken bilmeniz gerekenler ve baslangic rehberi...",
+    title: "Tarot Kartlarını Anlamanın İlk Adımları",
+    excerpt: "Tarot kartlarının gizemli dünyasına adım atarken bilmeniz gerekenler ve başlangıç rehberi...",
     category: "Tarot",
     categoryColor: "#4A2D7A",
     author: "Elif Sena Kara",
-    date: "6 Subat 2026",
+    date: "6 Şubat 2026",
   },
   {
-    title: "Nefes Calismasi ile Stresi Birakma",
-    excerpt: "Bilimsel olarak kanitlanmis nefes tekniklerini gunluk rutininize nasil dahil edebilirsiniz...",
+    title: "Nefes Çalışması ile Stresi Bırakma",
+    excerpt: "Bilimsel olarak kanıtlanmış nefes tekniklerini günlük rutininize nasıl dahil edebilirsiniz...",
     category: "Nefes Teknikleri",
     categoryColor: "#B8D4A3",
     author: "Mehmet Can Demir",
-    date: "4 Subat 2026",
+    date: "4 Şubat 2026",
   },
   {
-    title: "Yoga ve Zihinsel Saglik Arasindaki Bag",
+    title: "Yoga ve Zihinsel Sağlık Arasındaki Bağ",
     excerpt: "Modern bilim, binlerce yıllık yoga pratiğinin zihinsel sağlık üzerindeki etkilerini nasıl doğruluyor...",
     category: "Yoga",
     categoryColor: "#D4AF37",
     author: "Mehmet Can Demir",
-    date: "2 Subat 2026",
+    date: "2 Şubat 2026",
   },
 ];
 

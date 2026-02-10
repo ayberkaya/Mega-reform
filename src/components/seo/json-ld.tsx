@@ -7,7 +7,7 @@ const organizationSchema = {
   name: "Mega Reform",
   url: baseUrl,
   description:
-    "Meditasyon, yoga, tarot ve ruhsal gelisim icin uzman rehberlik platformu.",
+    "Meditasyon, yoga, tarot ve ruhsal gelişim için uzman rehberlik platformu.",
   locale: "tr_TR",
 };
 

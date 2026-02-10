@@ -105,7 +105,7 @@ export function CommentApprovalList({
           Son onaylananlar
         </h2>
         {approved.length === 0 && pending.length === 0 ? (
-          <p className="text-foreground/50">Henuz yorum yok.</p>
+          <p className="text-foreground/50">Henüz yorum yok.</p>
         ) : approved.length === 0 ? (
           <p className="text-foreground/50">Onaylanmis yorum yok.</p>
         ) : (

@@ -8,10 +8,10 @@ export default function ExpertCoursesPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-heading text-3xl font-bold text-primary">
-            Kurslarim
+            Kurslarım
           </h1>
           <p className="text-foreground/60 mt-1">
-            Kurslarinizi yonetin ve yenilerini olusturun
+            Kurslarınızı yönetin ve yenilerini oluşturun
           </p>
         </div>
         <Link href="/uzman/kurslarim/yeni">
@@ -33,13 +33,13 @@ export default function ExpertCoursesPage() {
             </svg>
           </div>
           <h3 className="font-heading text-xl font-bold text-primary mb-2">
-            Henuz kurs olusturulmamis
+            Henüz kurs oluşturulmamış
           </h3>
           <p className="text-foreground/60 mb-6 max-w-md mx-auto">
             Uzmanlık alanınızda kapsamlı eğitim içerikler oluşturun. Öğrencilerinize adım adım rehberlik edin.
           </p>
           <Link href="/uzman/kurslarim/yeni">
-            <Button variant="gold">Ilk Kursunu Olustur</Button>
+            <Button variant="gold">İlk Kursunu Oluştur</Button>
           </Link>
         </CardContent>
       </Card>

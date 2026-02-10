@@ -17,54 +17,54 @@ const DEMO_COURSES = [
     slug: "meditasyona-giris",
     title: "Meditasyona Giriş: 21 Günlük Program",
     description:
-      "Meditasyonu hayatinizin bir parcasi haline getirmek icin adim adim ilerleyeceginiz kapsamli bir program. Bu kursda, meditasyonun temel prensiplerini ogrenecek, gunluk pratik aliskanligi gelistirecek ve ic huzurunuzu kesfedeceksiniz.",
+      "Meditasyonu hayatınızın bir parçası haline getirmek için adım adım ilerleyeceğiniz kapsamlı bir program. Bu kursta, meditasyonun temel prensiplerini öğrenecek, günlük pratik alışkanlığı geliştirecek ve iç huzurunuzu keşfedeceksiniz.",
     price: null,
     isFree: true,
-    level: "Baslangic",
+    level: "Başlangıç",
     lessonCount: 21,
     duration: 315,
     enrollmentCount: 1247,
     rating: 4.9,
-    expert: { name: "Ayse Nur Yilmaz", slug: "ayse-nur-yilmaz", title: "Meditasyon Rehberi", bio: "15 yillik deneyimle ic huzur yolculugunuzda rehberlik ediyorum." },
+    expert: { name: "Ayşe Nur Yılmaz", slug: "ayse-nur-yilmaz", title: "Meditasyon Rehberi", bio: "15 yıllık deneyimle iç huzur yolculuğunuzda rehberlik ediyorum." },
     category: { name: "Meditasyon", slug: "meditasyon", color: "#9DC183" },
     isFeatured: true,
     learnings: [
-      "Meditasyonun temel prensiplerini ve tarihcesini ogreneceksiniz",
-      "Gunluk meditasyon aliskanligi olusturmayi basaracaksiniz",
-      "Nefes farkindaligi ve beden taramasi tekniklerini uygulayacaksiniz",
-      "Stres ve kaygiyi azaltmak icin etkili yontemler gelistireceksiniz",
-      "Farkindalik meditasyonu ile anin gucunu kesfedeceksiniz",
-      "Kendi meditasyon rutininizi tasarlamayi ogreneceksiniz",
+      "Meditasyonun temel prensiplerini ve tarihçesini öğreneceksiniz",
+      "Günlük meditasyon alışkanlığı oluşturmayı başaracaksınız",
+      "Nefes farkındalığı ve beden taraması tekniklerini uygulayacaksınız",
+      "Stres ve kaygıyı azaltmak için etkili yöntemler geliştireceksiniz",
+      "Farkındalık meditasyonu ile anın gücünü keşfedeceksiniz",
+      "Kendi meditasyon rutininizi tasarlamayı öğreneceksiniz",
     ],
   },
   {
     slug: "hatha-yoga-temelleri",
     title: "Hatha Yoga Temelleri",
     description:
-      "Yoga pratiginizi guvenli ve dogru bir sekilde baslatirsaniz. Temel asanalar ve nefes teknikleri ile bedeninizi ve zihninizi dengeye kavusturun. Bu kurs, yoga yolculugunuzun saglam temeller uzerine insa edilmesini saglar.",
+      "Yoga pratiğinizi güvenli ve doğru bir şekilde başlatırsanız. Temel asanalar ve nefes teknikleri ile bedeninizi ve zihninizi dengeye kavuşturun. Bu kurs, yoga yolculuğunuzun sağlam temeller üzerine inşa edilmesini sağlar.",
     price: 149,
     isFree: false,
-    level: "Baslangic",
+    level: "Başlangıç",
     lessonCount: 16,
     duration: 480,
     enrollmentCount: 856,
     rating: 4.8,
-    expert: { name: "Mehmet Can Demir", slug: "mehmet-can-demir", title: "Yoga Egitmeni", bio: "Beden ve ruh uyumunu kesfetmeniz icin yaninizdayim." },
+    expert: { name: "Mehmet Can Demir", slug: "mehmet-can-demir", title: "Yoga Eğitmeni", bio: "Beden ve ruh uyumunu keşfetmeniz için yanınızdayım." },
     category: { name: "Yoga", slug: "yoga", color: "#D4AF37" },
     isFeatured: false,
     learnings: [
-      "Temel yoga asanalarini dogru form ile uygulayacaksiniz",
-      "Pranayama (nefes teknikleri) ile enerji akinizi duzenleyeceksiniz",
-      "Esneklik ve guc dengenizi gelistireceksiniz",
-      "Guvenli yoga pratigi icin vucudunuzu dinlemeyi ogreneceksiniz",
-      "Evde kendi yoga rutininizi olusturabileceksiniz",
+      "Temel yoga asanalarını doğru form ile uygulayacaksınız",
+      "Pranayama (nefes teknikleri) ile enerji akışınızı düzenleyeceksiniz",
+      "Esneklik ve güç dengenizi geliştireceksiniz",
+      "Güvenli yoga pratiği için vücudunuzu dinlemeyi öğreneceksiniz",
+      "Evde kendi yoga rutininizi oluşturabileceksiniz",
     ],
   },
   {
     slug: "tarot-okuma-sanati",
     title: "Tarot Okuma Sanati",
     description:
-      "Tarot kartlarinin dilini ogrenin ve kendi okumalarinizi yapmaya baslayin. Bu kursda buyuk ve kucuk arkana kartlarinin anlamlarini, farkli acilim tekniklerini ve sezgisel okuma yontemlerini kesfedeceksiniz.",
+      "Tarot kartlarının dilini öğrenin ve kendi okumalarınızı yapmaya başlayın. Bu kursta büyük ve küçük arkana kartlarının anlamlarını, farklı açılım tekniklerini ve sezgisel okuma yöntemlerini keşfedeceksiniz.",
     price: 199,
     isFree: false,
     level: "Orta",
@@ -72,85 +72,85 @@ const DEMO_COURSES = [
     duration: 360,
     enrollmentCount: 432,
     rating: 4.7,
-    expert: { name: "Elif Sena Kara", slug: "elif-sena-kara", title: "Tarot Okuyucusu", bio: "Evrenin mesajlarini birlikte yorumluyoruz." },
+    expert: { name: "Elif Sena Kara", slug: "elif-sena-kara", title: "Tarot Okuyucusu", bio: "Evrenin mesajlarını birlikte yorumluyoruz." },
     category: { name: "Tarot", slug: "tarot", color: "#4A2D7A" },
     isFeatured: true,
     learnings: [
-      "78 tarot kartinin anlamlarini derinlemesine ogreneceksiniz",
-      "Farkli acilim tekniklerini uygulayabileceksiniz",
-      "Sezgisel okuma yeteneklerinizi gelistireceksiniz",
-      "Kendiniz ve baskalar icin tarot okumasi yapabileceksiniz",
-      "Kartlar arasindaki iliskileri ve sembolizmi kavrayacaksiniz",
-      "Gunluk kart cekme pratigi ile rehberlik almayi ogreneceksiniz",
+      "78 tarot kartının anlamlarını derinlemesine öğreneceksiniz",
+      "Farklı açılım tekniklerini uygulayabileceksiniz",
+      "Sezgisel okuma yeteneklerinizi geliştireceksiniz",
+      "Kendiniz ve başkaları için tarot okuması yapabileceksiniz",
+      "Kartlar arasındaki ilişkileri ve sembolizmi kavrayacaksınız",
+      "Günlük kart çekme pratiği ile rehberlik almayı öğreneceksiniz",
     ],
   },
   {
     slug: "ruhsal-farkindalik",
-    title: "Ruhsal Farkindalik ve Ic Yolculuk",
+    title: "Ruhsal Farkındalık ve İç Yolculuk",
     description:
-      "Kendinizi derinlemesine kesfetmeniz icin hazirlanmis kapsamli bir ruhsal gelisim programi. Ic sesinizi dinlemeyi, enerji bedeninizi anlamayi ve ruhsal donusumunuzu baslatmayi ogreneceksiniz.",
+      "Kendinizi derinlemesine keşfetmeniz için hazırlanmış kapsamlı bir ruhsal gelişim programı. İç sesinizi dinlemeyi, enerji bedeninizi anlamayı ve ruhsal dönüşümünüzü başlatmayı öğreneceksiniz.",
     price: 249,
     isFree: false,
-    level: "Ileri",
+    level: "İleri",
     lessonCount: 24,
     duration: 720,
     enrollmentCount: 318,
     rating: 4.9,
-    expert: { name: "Ahmet Baris Ozturk", slug: "ahmet-baris-ozturk", title: "Ruhsal Danismani", bio: "Ruhsal donusum yolculugunuzda size isik tutuyorum." },
+    expert: { name: "Ahmet Barış Öztürk", slug: "ahmet-baris-ozturk", title: "Ruhsal Danışmanı", bio: "Ruhsal dönüşüm yolculuğunuzda size ışık tutuyorum." },
     category: { name: "Ruhsal Gelisim", slug: "ruhsal-gelisim", color: "#D3D3FF" },
     isFeatured: false,
     learnings: [
-      "Ic sesinizi dinlemeyi ve sezgilerinize guvenmezi ogreneceksiniz",
-      "Enerji bedeninizi ve cakra sisteminizi anlayacaksiniz",
+      "İç sesinizi dinlemeyi ve sezgilerinize güvenmeyi öğreneceksiniz",
+      "Enerji bedeninizi ve çakra sisteminizi anlayacaksınız",
       "Derin meditasyon tekniklerini uygulayabileceksiniz",
-      "Ruhsal donusum surecini bilineli bir sekilde yoneteceksiniz",
-      "Golge calismasi ve ic cocuk iyilesmesi yapabileceksiniz",
+      "Ruhsal dönüşüm sürecini bilinçli bir şekilde yöneteceksiniz",
+      "Gölge çalışması ve iç çocuk iyileşmesi yapabileceksiniz",
     ],
   },
   {
     slug: "nefes-terapi-programi",
-    title: "Nefes Terapi Programi",
+    title: "Nefes Terapi Programı",
     description:
-      "Farkli nefes tekniklerini ogrenin ve gunluk hayatinizda etkili bir sekilde uygulayin. Pranayama, holotropik nefes ve diger guclu nefes tekniklerini kesfederek bedensel ve zihinsel sagliginizi destekleyin.",
+      "Farklı nefes tekniklerini öğrenin ve günlük hayatınızda etkili bir şekilde uygulayın. Pranayama, holotropik nefes ve diğer güçlü nefes tekniklerini keşfederek bedensel ve zihinsel sağlığınızı destekleyin.",
     price: 99,
     isFree: false,
-    level: "Baslangic",
+    level: "Başlangıç",
     lessonCount: 10,
     duration: 150,
     enrollmentCount: 567,
     rating: 4.6,
-    expert: { name: "Zeynep Aslan", slug: "zeynep-aslan", title: "Nefes Terapisti", bio: "Nefes calismalariyla bedeninizin dogal sifa gucunu kesfetmenize yardimci oluyorum." },
+    expert: { name: "Zeynep Aslan", slug: "zeynep-aslan", title: "Nefes Terapisti", bio: "Nefes çalışmalarıyla bedeninizin doğal şifa gücünü keşfetmenize yardımcı oluyorum." },
     category: { name: "Nefes Teknikleri", slug: "nefes-teknikleri", color: "#B8D4A3" },
     isFeatured: false,
     learnings: [
-      "Temel nefes tekniklerini dogru bir sekilde uygulayacaksiniz",
-      "Stres ve kaygi anlarinda nefes kontrolu saglayabileceksiniz",
-      "Uyku kalitesini artiran nefes pratiklerini ogreneceksiniz",
-      "Enerji seviyenizi nefes calismalariyla yukselteceksiniz",
+      "Temel nefes tekniklerini doğru bir şekilde uygulayacaksınız",
+      "Stres ve kaygı anlarında nefes kontrolü sağlayabileceksiniz",
+      "Uyku kalitesini artıran nefes pratiklerini öğreneceksiniz",
+      "Enerji seviyenizi nefes çalışmalarıyla yükselteceksiniz",
     ],
   },
   {
     slug: "ileri-mindfulness",
-    title: "Ileri Seviye Mindfulness",
+    title: "İleri Seviye Mindfulness",
     description:
-      "Mindfulness pratiginizi derinlestirin. Gunluk farkindalik, vucud taramasi ve sevgi dolu sefkat meditasyonlari ile ic dunyaniza derinlemesine dalin.",
+      "Mindfulness pratiğinizi derinleştirin. Günlük farkındalık, vücut taraması ve sevgi dolu şefkat meditasyonları ile iç dünyanıza derinlemesine dalın.",
     price: 179,
     isFree: false,
-    level: "Ileri",
+    level: "İleri",
     lessonCount: 18,
     duration: 540,
     enrollmentCount: 234,
     rating: 4.8,
-    expert: { name: "Ali Riza Celik", slug: "ali-riza-celik", title: "Mindfulness Kocu", bio: "Anin gucuyle baglanti kurmak icin mindfulness pratigiyle hayatiniza yeni bir bakis acisi katiyorum." },
+    expert: { name: "Ali Rıza Çelik", slug: "ali-riza-celik", title: "Mindfulness Koçu", bio: "Anın gücüyle bağlantı kurmak için mindfulness pratiğiyle hayatınıza yeni bir bakış açısı katıyorum." },
     category: { name: "Mindfulness", slug: "mindfulness", color: "#E5C85A" },
     isFeatured: false,
     learnings: [
-      "Ileri seviye farkindalik meditasyonu tekniklerini ogreneceksiniz",
-      "Vucud taramasi ile derin rahatlamayi deneyimleyeceksiniz",
-      "Sevgi dolu sefkat (metta) meditasyonunu uygulayacaksiniz",
-      "Gunluk hayatta surekli farkindalik durumunu surdurebileceksiniz",
-      "Zor duygularla mindful bir sekilde basa cikmayi ogreneceksiniz",
-      "Farkindalik temelli stres azaltma (MBSR) tekniklerini kesfedeceksiniz",
+      "İleri seviye farkındalık meditasyonu tekniklerini öğreneceksiniz",
+      "Vücut taraması ile derin rahatlamayı deneyimleyeceksiniz",
+      "Sevgi dolu şefkat (metta) meditasyonunu uygulayacaksınız",
+      "Günlük hayatta sürekli farkındalık durumunu sürdürebileceksiniz",
+      "Zor duygularla mindful bir şekilde başa çıkmayı öğreneceksiniz",
+      "Farkındalık temelli stres azaltma (MBSR) tekniklerini keşfedeceksiniz",
     ],
   },
 ];
@@ -158,15 +158,15 @@ const DEMO_COURSES = [
 const DEMO_LESSONS = [
   { title: "Giriş ve Hoş Geldiniz", duration: 5, isFree: true },
   { title: "Temel Kavramlar", duration: 15, isFree: true },
-  { title: "Ilk Pratik", duration: 20, isFree: false },
-  { title: "Derinlesme", duration: 25, isFree: false },
-  { title: "Gunluk Rutininizi Olusturma", duration: 15, isFree: false },
+  { title: "İlk Pratik", duration: 20, isFree: false },
+  { title: "Derinleşme", duration: 25, isFree: false },
+  { title: "Günlük Rutininizi Oluşturma", duration: 15, isFree: false },
 ];
 
 const levelConfig: Record<string, { label: string; variant: "sage" | "gold" | "primary" }> = {
-  Baslangic: { label: "Baslangic", variant: "sage" },
+  Başlangıç: { label: "Başlangıç", variant: "sage" },
   Orta: { label: "Orta", variant: "gold" },
-  Ileri: { label: "Ileri", variant: "primary" },
+  İleri: { label: "İleri", variant: "primary" },
 };
 
 function findCourse(slug: string) {
@@ -182,7 +182,7 @@ export async function generateMetadata({
   const course = findCourse(slug);
 
   if (!course) {
-    return { title: "Kurs Bulunamadi | Mega Reform" };
+    return { title: "Kurs Bulunamadı | Mega Reform" };
   }
 
   return {
@@ -256,7 +256,7 @@ export default async function KursDetayPage({
                   )}
                   {course.isFeatured && (
                     <Badge variant="cream" className="text-xs">
-                      One Cikan
+                      Öne Çıkan
                     </Badge>
                   )}
                 </div>
@@ -298,7 +298,7 @@ export default async function KursDetayPage({
                       <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2" />
                       <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <span>{course.enrollmentCount.toLocaleString("tr-TR")} katilimci</span>
+                    <span>{course.enrollmentCount.toLocaleString("tr-TR")} katılımcı</span>
                   </div>
 
                   {/* Lessons */}
@@ -339,13 +339,13 @@ export default async function KursDetayPage({
                 {/* Action buttons */}
                 <div className="flex flex-wrap items-center gap-3 pt-4">
                   <Button variant={course.isFree ? "primary" : "gold"} size="lg">
-                    {course.isFree ? "Kursa Katil" : `Kursa Katil - ${formatCurrency(course.price!)}`}
+                    {course.isFree ? "Kursa Katıl" : `Kursa Katıl - ${formatCurrency(course.price!)}`}
                   </Button>
                   <Button variant="secondary" size="lg">
                     <svg className="h-5 w-5 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <polygon points="5 3 19 12 5 21 5 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.1" />
                     </svg>
-                    Tanitim Videosunu Izle
+                    Tanıtım Videosunu İzle
                   </Button>
                 </div>
               </div>
@@ -357,7 +357,7 @@ export default async function KursDetayPage({
                     {/* Price */}
                     <div className="text-center">
                       {course.isFree ? (
-                        <span className="font-heading text-3xl font-bold text-sage">Ucretsiz</span>
+                        <span className="font-heading text-3xl font-bold text-sage">Ücretsiz</span>
                       ) : (
                         <span className="font-heading text-3xl font-bold text-primary">
                           {formatCurrency(course.price!)}
@@ -386,7 +386,7 @@ export default async function KursDetayPage({
                         <span className="font-medium text-foreground/80">{course.level}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span>Katilimci</span>
+                        <span>Katılımcı</span>
                         <span className="font-medium text-foreground/80">{course.enrollmentCount.toLocaleString("tr-TR")}</span>
                       </div>
                     </div>
@@ -404,7 +404,7 @@ export default async function KursDetayPage({
               <Card>
                 <CardContent className="space-y-6">
                   <h2 className="font-heading text-2xl font-bold text-primary">
-                    Bu Kursta Neler Ogreneceksiniz?
+                    Bu Kursta Neler Öğreneceksiniz?
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {course.learnings.map((item, i) => (
@@ -440,7 +440,7 @@ export default async function KursDetayPage({
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <h2 className="font-heading text-2xl font-bold text-primary mb-8">
-                Mufredat
+                Müfredat
               </h2>
             </ScrollReveal>
 
@@ -490,7 +490,7 @@ export default async function KursDetayPage({
                       {/* Lock / Free indicator */}
                       {isAccessible ? (
                         <Badge variant="sage" className="text-[10px] shrink-0">
-                          Ucretsiz
+                          Ücretsiz
                         </Badge>
                       ) : (
                         <svg
@@ -522,7 +522,7 @@ export default async function KursDetayPage({
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <h2 className="font-heading text-2xl font-bold text-primary mb-8">
-                Egitmen
+                Eğitmen
               </h2>
             </ScrollReveal>
 
@@ -549,7 +549,7 @@ export default async function KursDetayPage({
 
                       <Link href={`/uzmanlar/${course.expert.slug}`}>
                         <Button variant="ghost" size="sm">
-                          Profili Goruntule
+                          Profili Görüntüle
                         </Button>
                       </Link>
                     </div>

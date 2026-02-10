@@ -129,9 +129,9 @@ export default function NewCoursePage() {
               </label>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { label: "Baslangic", value: "Baslangic" },
+                  { label: "Başlangıç", value: "Başlangıç" },
                   { label: "Orta", value: "Orta" },
-                  { label: "Ileri", value: "Ileri" },
+                  { label: "İleri", value: "İleri" },
                 ].map((lvl) => (
                   <button
                     key={lvl.value}
@@ -163,7 +163,7 @@ export default function NewCoursePage() {
                   onChange={(e) => setIsFree(e.target.checked)}
                   className="rounded border-lavender/30 text-primary focus:ring-lavender"
                 />
-                <span className="text-sm text-foreground/70">Ucretsiz kurs</span>
+                <span className="text-sm text-foreground/70">Ücretsiz kurs</span>
               </label>
               {!isFree && (
                 <div className="flex items-center gap-2">

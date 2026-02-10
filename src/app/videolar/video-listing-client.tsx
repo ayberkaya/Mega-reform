@@ -76,7 +76,7 @@ export function VideoListingClient({
 
       {videos.length === 0 ? (
         <div className="rounded-2xl border border-lavender/20 bg-white/50 p-12 text-center">
-          <p className="text-foreground/50">Bu kategoride henuz video yok.</p>
+          <p className="text-foreground/50">Bu kategoride henüz video yok.</p>
         </div>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

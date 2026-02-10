@@ -20,7 +20,7 @@ export async function createComment(
 ): Promise<CommentActionResult> {
   const session = await auth();
   if (!session?.user?.id) {
-    return { error: "Yorum yapmak icin giris yapmalisiniz." };
+    return { error: "Yorum yapmak için giriş yapmalısınız." };
   }
 
   const validated = createCommentSchema.safeParse(data);
@@ -62,7 +62,7 @@ export async function createReply(
 ): Promise<CommentActionResult> {
   const session = await auth();
   if (!session?.user?.id) {
-    return { error: "Yanit vermek icin giris yapmalisiniz." };
+    return { error: "Yanıt vermek için giriş yapmalısınız." };
   }
 
   const validated = createReplySchema.safeParse(data);
