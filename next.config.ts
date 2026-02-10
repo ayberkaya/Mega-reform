@@ -5,6 +5,11 @@ const projectRoot = path.resolve(process.cwd());
 const tailwindPath = path.join(projectRoot, "node_modules/tailwindcss");
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
+    ],
+  },
   async redirects() {
     return [
       { source: "/rehberler", destination: "/uzmanlar", permanent: true },

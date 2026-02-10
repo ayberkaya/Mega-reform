@@ -11,7 +11,6 @@ interface Article {
   excerpt: string;
   category: string;
   categoryColor: string;
-  readTime: number;
   author: string;
   date: string;
 }
@@ -22,7 +21,6 @@ const DEMO_ARTICLES: Article[] = [
     excerpt: "Meditasyonu hayatiniza dahil ettiginizde bedeninizde ve ruhunuzda gozlemleyeceginiz degisimler...",
     category: "Meditasyon",
     categoryColor: "#9DC183",
-    readTime: 5,
     author: "Ayse Nur Yilmaz",
     date: "8 Subat 2026",
   },
@@ -31,7 +29,6 @@ const DEMO_ARTICLES: Article[] = [
     excerpt: "Tarot kartlarinin gizemli dunyasina adim atarken bilmeniz gerekenler ve baslangic rehberi...",
     category: "Tarot",
     categoryColor: "#4A2D7A",
-    readTime: 8,
     author: "Elif Sena Kara",
     date: "6 Subat 2026",
   },
@@ -40,7 +37,6 @@ const DEMO_ARTICLES: Article[] = [
     excerpt: "Bilimsel olarak kanitlanmis nefes tekniklerini gunluk rutininize nasil dahil edebilirsiniz...",
     category: "Nefes Teknikleri",
     categoryColor: "#B8D4A3",
-    readTime: 4,
     author: "Mehmet Can Demir",
     date: "4 Subat 2026",
   },
@@ -49,7 +45,6 @@ const DEMO_ARTICLES: Article[] = [
     excerpt: "Modern bilim, binlerce yıllık yoga pratiğinin zihinsel sağlık üzerindeki etkilerini nasıl doğruluyor...",
     category: "Yoga",
     categoryColor: "#D4AF37",
-    readTime: 6,
     author: "Mehmet Can Demir",
     date: "2 Subat 2026",
   },
@@ -87,9 +82,6 @@ export function LatestArticles() {
                     >
                       {article.category}
                     </Badge>
-                    <span className="text-xs text-foreground/40">
-                      {article.readTime} {tr.articles.readTime}
-                    </span>
                   </div>
                   <h3 className="font-heading text-xl md:text-2xl font-bold text-primary mb-2 group-hover:text-primary-light transition-colors">
                     {article.title}

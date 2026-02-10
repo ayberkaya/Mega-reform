@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ExpertListingClient } from "@/components/experts/expert-listing-client";
+import { DEMO_EXPERTS } from "@/data/demo-experts";
 
 export const revalidate = 3600; // 1 hr
 export const metadata: Metadata = {
@@ -11,76 +12,6 @@ export const metadata: Metadata = {
   description:
     "Alanında deneyimli, güvenilir rehberlerle tanışın. Meditasyon, yoga, tarot ve ruhsal gelişim uzmanlarımızı keşfedin.",
 };
-
-// Demo data for development
-const DEMO_EXPERTS = [
-  {
-    slug: "ayse-nur-yilmaz",
-    name: "Ayse Nur Yilmaz",
-    title: "Meditasyon Rehberi",
-    specialties: ["Meditasyon", "Mindfulness"],
-    rating: 4.9,
-    reviewCount: 47,
-    bio: "15 yillik deneyimle ic huzur yolculugunuzda rehberlik ediyorum. Mindfulness ve meditasyon teknikleriyle hayatiniza denge katiyorum.",
-    isVerified: true,
-    yearsExperience: 15,
-  },
-  {
-    slug: "mehmet-can-demir",
-    name: "Mehmet Can Demir",
-    title: "Yoga Egitmeni",
-    specialties: ["Yoga", "Nefes Teknikleri"],
-    rating: 4.8,
-    reviewCount: 35,
-    bio: "Beden ve ruh uyumunu kesfetmeniz icin yaninizdayim. Hatha ve Vinyasa yoga derslerimle ic dengenizi bulun.",
-    isVerified: true,
-    yearsExperience: 12,
-  },
-  {
-    slug: "elif-sena-kara",
-    name: "Elif Sena Kara",
-    title: "Tarot Okuyucusu",
-    specialties: ["Tarot", "Ruhsal Gelisim"],
-    rating: 4.7,
-    reviewCount: 28,
-    bio: "Evrenin mesajlarini birlikte yorumluyoruz. Tarot okumalarimla yasam yolculugunuzda ilham bulun.",
-    isVerified: false,
-    yearsExperience: 8,
-  },
-  {
-    slug: "ahmet-baris-ozturk",
-    name: "Ahmet Baris Ozturk",
-    title: "Ruhsal Danismani",
-    specialties: ["Ruhsal Gelisim", "Meditasyon"],
-    rating: 4.9,
-    reviewCount: 52,
-    bio: "Ruhsal donusum yolculugunuzda size isik tutuyorum. Kisisel gelisim ve farkindalik seanslarimla kendinizi kesfedeceksiniz.",
-    isVerified: true,
-    yearsExperience: 20,
-  },
-  {
-    slug: "zeynep-aslan",
-    name: "Zeynep Aslan",
-    title: "Nefes Terapisti",
-    specialties: ["Nefes Teknikleri", "Mindfulness"],
-    rating: 4.6,
-    reviewCount: 19,
-    bio: "Nefes calismalariyla bedeninizin dogal sifa gucunu kesfetmenize yardimci oluyorum.",
-    isVerified: false,
-    yearsExperience: 6,
-  },
-  {
-    slug: "ali-riza-celik",
-    name: "Ali Riza Celik",
-    title: "Mindfulness Kocu",
-    specialties: ["Mindfulness", "Yoga"],
-    rating: 4.8,
-    reviewCount: 31,
-    bio: "Anin gucuyle baglanti kurmak icin mindfulness pratigiyle hayatiniza yeni bir bakis acisi katiyorum.",
-    isVerified: true,
-    yearsExperience: 10,
-  },
-];
 
 const DEMO_CATEGORIES = [
   { name: "Meditasyon", slug: "meditasyon" },
@@ -102,7 +33,21 @@ async function getExperts() {
     });
 
     if (experts.length === 0) {
-      return { experts: DEMO_EXPERTS, isDemo: true };
+      return {
+        experts: DEMO_EXPERTS.map((e) => ({
+          slug: e.slug,
+          name: e.name,
+          title: e.title,
+          specialties: e.specialties,
+          rating: e.rating,
+          reviewCount: e.reviewCount,
+          bio: e.bio,
+          isVerified: e.isVerified,
+          yearsExperience: e.yearsExperience,
+          image: e.image,
+        })),
+        isDemo: true,
+      };
     }
 
     return {
@@ -121,7 +66,21 @@ async function getExperts() {
       isDemo: false,
     };
   } catch {
-    return { experts: DEMO_EXPERTS, isDemo: true };
+    return {
+      experts: DEMO_EXPERTS.map((e) => ({
+        slug: e.slug,
+        name: e.name,
+        title: e.title,
+        specialties: e.specialties,
+        rating: e.rating,
+        reviewCount: e.reviewCount,
+        bio: e.bio,
+        isVerified: e.isVerified,
+        yearsExperience: e.yearsExperience,
+        image: e.image,
+      })),
+      isDemo: true,
+    };
   }
 }
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils/cn";
-import { formatDateShort, formatReadTime } from "@/lib/utils/format";
+import { formatDateShort } from "@/lib/utils/format";
 import { Badge } from "@/components/ui/badge";
 import { Avatar } from "@/components/ui/avatar";
 
@@ -13,7 +13,6 @@ interface ArticleCardProps {
   title: string;
   excerpt?: string | null;
   coverImage?: string | null;
-  readTime?: number | null;
   publishedAt?: Date | string | null;
   category?: { name: string; slug: string; color?: string | null } | null;
   expert?: { name: string; slug: string; image?: string | null } | null;
@@ -25,7 +24,6 @@ export function ArticleCard({
   title,
   excerpt,
   coverImage,
-  readTime,
   publishedAt,
   category,
   expert,
@@ -134,31 +132,6 @@ export function ArticleCard({
             )}
 
             <div className="flex shrink-0 items-center gap-3 text-xs text-foreground/40">
-              {readTime != null && (
-                <span className="flex items-center gap-1">
-                  <svg
-                    className="h-3.5 w-3.5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="9"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                    />
-                    <path
-                      d="M12 7v5l3 3"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  {formatReadTime(readTime)}
-                </span>
-              )}
               {publishedAt && (
                 <span>{formatDateShort(publishedAt)}</span>
               )}

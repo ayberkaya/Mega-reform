@@ -1,12 +1,35 @@
 # Stock videos
 
-Tema videoları `src/lib/utils/constants.ts` içindeki `STOCK_VIDEOS` ile yapılandırılıyor; varsayılan olarak Pexels CDN kullanılıyor.
+Tema videoları `src/lib/utils/constants.ts` içindeki `STOCK_VIDEOS` ile yapılandırılıyor.
 
-**Performans:** Videoları bu klasöre koymak siteyi yavaşlatmaz; aynı boyutta dosya kullanırsanız self-host genelde daha stabil ve cache dostu olur. Yavaşlık büyük dosyalardan (4K, uzun süre) gelir – **720p, kısa klipler** kullanın.
+**Performans:** 720p, kısa klipler kullanın; büyük dosyalar yavaşlatır.
 
-Kendi videolarınızı kullanmak için:
+---
 
-1. [Pexels](https://www.pexels.com/search/videos/meditation/) veya [Coverr](https://coverr.co/stock-video-footage/meditation) üzerinden meditasyon / doğa / huzur temalı videolar indirin (**720p tercih**).
-2. Şu isimlerle bu klasöre koyun:
-   - `hero-bg.mp4` – hero arka plan (isteğe bağlı; constants’ta URL’i `/videos/hero-bg.mp4` yapın)
-3. İsterseniz `constants.ts` içinde `STOCK_VIDEOS` URL’lerini kendi CDN veya `/videos/...` yollarınıza güncelleyin.
+## Anasayfadaki “İlham Veren İçerikler” (VideoShowcase) için iki yol
+
+### 1) Yönetim panelinden gerçek videolar (önerilen)
+
+- **Yol:** [Yönetim](http://localhost:3000/yonetim) → **Videolar** → **Yeni Video**
+- Başlık, açıklama girin; **Öne çıkan** işaretleyin. İsteğe bağlı: **Thumbnail URL** (yoksa stok video oynar).
+- Anasayfada en fazla **5 öne çıkan** video listelenir: biri büyük kutuda, dördü altta grid’de.
+- Bu videolar `/videolar` sayfasına da gider; tıklanınca ilgili video sayfasına yönlendirir.
+
+### 2) Sadece yerel dosya ile placeholder’ları doldurmak
+
+Veritabanına video eklemeden, sadece **dosya koyarak** anasayfadaki bölümü doldurmak için bu klasöre şu isimlerle video koyun:
+
+| Dosya adı | Nerede görünür |
+|-----------|-----------------|
+| `hero-bg.mp4` | Ana sayfa en üst (hero) arka plan |
+| `showcase-featured.mp4` | VideoShowcase’deki **büyük kutu** (öne çıkan video yokken) |
+| `showcase-1.mp4` | 1. küçük kart – “Sabah Meditasyonu” |
+| `showcase-2.mp4` | 2. kart – “Nefes Calismasi” |
+| `showcase-3.mp4` | 3. kart – “Yoga Akisi” |
+| `showcase-4.mp4` | 4. kart – “Tarot Rehberi” |
+
+Dosya koymazsanız ilgili yerde Pexels stok video (veya mevcut fallback) kullanılır.
+
+---
+
+İsterseniz `constants.ts` içinde `STOCK_VIDEOS` URL’lerini kendi CDN veya `/videos/...` yollarınıza güncelleyebilirsiniz.

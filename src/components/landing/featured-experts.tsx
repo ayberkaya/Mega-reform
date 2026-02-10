@@ -7,51 +7,7 @@ import { StarRating } from "@/components/ui/star-rating";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
 import { tr } from "@/content/tr";
-
-interface Expert {
-  slug: string;
-  name: string;
-  title: string;
-  image?: string;
-  specialties: string[];
-  rating: number;
-  bio: string;
-}
-
-const DEMO_EXPERTS: Expert[] = [
-  {
-    slug: "ayse-nur-yilmaz",
-    name: "Ayşe Nur Yılmaz",
-    title: "Meditasyon Rehberi",
-    specialties: ["Meditasyon", "Mindfulness"],
-    rating: 4.9,
-    bio: "15 yıllık deneyimle iç huzur yolculuğunuzda rehberlik ediyorum.",
-  },
-  {
-    slug: "mehmet-can-demir",
-    name: "Mehmet Can Demir",
-    title: "Yoga Eğitmeni",
-    specialties: ["Yoga", "Nefes Teknikleri"],
-    rating: 4.8,
-    bio: "Beden ve ruh uyumunu keşfetmeniz için yanınızdayım.",
-  },
-  {
-    slug: "elif-sena-kara",
-    name: "Elif Sena Kara",
-    title: "Tarot Okuyucusu",
-    specialties: ["Tarot", "Ruhsal Gelişim"],
-    rating: 4.7,
-    bio: "Evrenin mesajlarını birlikte yorumluyoruz.",
-  },
-  {
-    slug: "ahmet-baris-ozturk",
-    name: "Ahmet Barış Öztürk",
-    title: "Ruhsal Danışmanı",
-    specialties: ["Ruhsal Gelişim", "Meditasyon"],
-    rating: 4.9,
-    bio: "Ruhsal dönüşüm yolculuğunuzda size ışık tutuyorum.",
-  },
-];
+import { DEMO_EXPERTS_LANDING } from "@/data/demo-experts";
 
 export function FeaturedExperts() {
   return (
@@ -67,13 +23,14 @@ export function FeaturedExperts() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {DEMO_EXPERTS.map((expert, i) => (
+          {DEMO_EXPERTS_LANDING.map((expert, i) => (
             <ScrollReveal key={expert.slug} delay={i * 0.12} variant="fadeUp">
               <Link href={`/uzmanlar/${expert.slug}`} className="block group">
                 <Card className="text-center p-6 hover:shadow-2xl transition-shadow h-full">
                   <CardContent className="p-0">
                     <div className="flex justify-center mb-4">
                       <Avatar
+                        src={expert.image}
                         alt={expert.name}
                         size="lg"
                         breathing

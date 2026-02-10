@@ -10,103 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { StarRating } from "@/components/ui/star-rating";
 import { Button } from "@/components/ui/button";
 import { ExpertProfileTabs } from "@/components/experts/expert-profile-tabs";
-
-/* -------------------------------------------------------------------------- */
-/*  Demo Data                                                                  */
-/* -------------------------------------------------------------------------- */
-
-const DEMO_EXPERTS = [
-  {
-    slug: "ayse-nur-yilmaz",
-    name: "Ayse Nur Yilmaz",
-    title: "Meditasyon Rehberi",
-    specialties: ["Meditasyon", "Mindfulness"],
-    rating: 4.9,
-    reviewCount: 47,
-    bio: "15 yillik deneyimle ic huzur yolculugunuzda rehberlik ediyorum. Mindfulness ve meditasyon teknikleriyle hayatiniza denge katiyorum.",
-    longBio:
-      "15 yildir meditasyon ve mindfulness alaninda calisiyorum. Hindistan ve Nepal'de aldigi egitimlerle Dogu felsefesini modern yasama uyarliyorum.\n\nHer birey icin ozel tasarlanmis meditasyon programlariyla, stres yonetimi, uyku duzeni ve duygusal denge konularinda destek sunuyorum. Grup seanslari ve bireysel danismanlik hizmetlerimle yuzlerce kisinin ic huzurunu bulmasi icin yol gosterdim.\n\nAmacim, herkesin kendi ic sesini duyabilecegi bir alan yaratmak ve bilincliligi gunluk yasama entegre etmektir.",
-    isVerified: true,
-    yearsExperience: 15,
-    website: "https://aysenur.example.com",
-    socialLinks: { instagram: "aysenur_meditation", youtube: "AyseNurYilmaz" },
-  },
-  {
-    slug: "mehmet-can-demir",
-    name: "Mehmet Can Demir",
-    title: "Yoga Egitmeni",
-    specialties: ["Yoga", "Nefes Teknikleri"],
-    rating: 4.8,
-    reviewCount: 35,
-    bio: "Beden ve ruh uyumunu kesfetmeniz icin yaninizdayim. Hatha ve Vinyasa yoga derslerimle ic dengenizi bulun.",
-    longBio:
-      "Yoga pratigiyle 12 yildir hayatimi sekillendiriyorum. Rishikesh'te 500 saatlik yoga ogretmenlik egitimimi tamamladiktan sonra Turkiye'de yoga ogretmenligine basladim.\n\nHatha, Vinyasa ve restoratif yoga derslerimle bedensel ve zihinsel sagliginizi destekliyorum. Nefes tekniklerini yoga pratigiyle birlestirerek butunsel bir iyilesme deneyimi sunuyorum.",
-    isVerified: true,
-    yearsExperience: 12,
-    website: null,
-    socialLinks: { instagram: "mehmetcan_yoga" },
-  },
-  {
-    slug: "elif-sena-kara",
-    name: "Elif Sena Kara",
-    title: "Tarot Okuyucusu",
-    specialties: ["Tarot", "Ruhsal Gelisim"],
-    rating: 4.7,
-    reviewCount: 28,
-    bio: "Evrenin mesajlarini birlikte yorumluyoruz. Tarot okumalarimla yasam yolculugunuzda ilham bulun.",
-    longBio:
-      "8 yildir tarot ve ruhsal gelisim alaninda calisiyorum. Rider-Waite ve Marseille tarot desteleriyle calisarak, danisanlarima yasam yolculuklarinda rehberlik ediyorum.\n\nTarot okumalari ile bireysel farkindalik seanslarini birlestirerek butunsel bir ruhsal gelisim deneyimi sunuyorum.",
-    isVerified: false,
-    yearsExperience: 8,
-    website: null,
-    socialLinks: {},
-  },
-  {
-    slug: "ahmet-baris-ozturk",
-    name: "Ahmet Baris Ozturk",
-    title: "Ruhsal Danismani",
-    specialties: ["Ruhsal Gelisim", "Meditasyon"],
-    rating: 4.9,
-    reviewCount: 52,
-    bio: "Ruhsal donusum yolculugunuzda size isik tutuyorum. Kisisel gelisim ve farkindalik seanslarimla kendinizi kesfedeceksiniz.",
-    longBio:
-      "20 yillik deneyimimle ruhsal gelisim ve meditasyon alanlarinda binlerce kisiye rehberlik ettim. Bireysel danismanlik ve grup calismalariyla katilimcilarin ic dunyalarini kesfetmelerine yardimci oluyorum.\n\nYontemim, Dogu ve Bati felsefelerini harmanlayarak modern insanin ihtiyaclarina uygun bir ruhsal gelisim yolu sunmaktir.",
-    isVerified: true,
-    yearsExperience: 20,
-    website: "https://ahmetbaris.example.com",
-    socialLinks: { instagram: "ahmetbaris_spiritual", youtube: "AhmetBarisOzturk" },
-  },
-  {
-    slug: "zeynep-aslan",
-    name: "Zeynep Aslan",
-    title: "Nefes Terapisti",
-    specialties: ["Nefes Teknikleri", "Mindfulness"],
-    rating: 4.6,
-    reviewCount: 19,
-    bio: "Nefes calismalariyla bedeninizin dogal sifa gucunu kesfetmenize yardimci oluyorum.",
-    longBio:
-      "Nefes terapisi alaninda 6 yildir calisiyorum. Pranayama, holotropik nefes ve modern nefes teknikleriyle bedenin dogal iyilesme mekanizmalarini harekete geciriyorum.\n\nSeans calismalari ile stres, kaygi ve uyku problemlerine dogal cozumler sunuyorum.",
-    isVerified: false,
-    yearsExperience: 6,
-    website: null,
-    socialLinks: { instagram: "zeynep_breathwork" },
-  },
-  {
-    slug: "ali-riza-celik",
-    name: "Ali Riza Celik",
-    title: "Mindfulness Kocu",
-    specialties: ["Mindfulness", "Yoga"],
-    rating: 4.8,
-    reviewCount: 31,
-    bio: "Anin gucuyle baglanti kurmak icin mindfulness pratigiyle hayatiniza yeni bir bakis acisi katiyorum.",
-    longBio:
-      "10 yildir mindfulness ve farkindalik calismalariyla bireylere ve kurumlara hizmet veriyorum. MBSR (Mindfulness Tabanli Stres Azaltma) sertifikali egitimciyim.\n\nGunluk yasama entegre edilebilen pratik mindfulness teknikleri ile is-yasam dengesini kurmaniza ve zihinsel berrakliga ulasmaniza yardimci oluyorum.",
-    isVerified: true,
-    yearsExperience: 10,
-    website: "https://aliriza.example.com",
-    socialLinks: { instagram: "aliriza_mindful" },
-  },
-];
+import { DEMO_EXPERTS } from "@/data/demo-experts";
 
 const DEMO_REVIEWS = [
   {
@@ -185,7 +89,6 @@ async function getExpert(slug: string) {
 
   return {
     ...demo,
-    image: null as string | null,
     coverImage: null as string | null,
   };
 }

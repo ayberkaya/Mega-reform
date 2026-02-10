@@ -1,9 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
-import { WaveDivider } from "@/components/animations/wave-divider";
 import { tr } from "@/content/tr";
 import { STOCK_VIDEOS } from "@/lib/utils/constants";
 
@@ -25,6 +25,58 @@ const PLACEHOLDER_TITLES = [
   "Yoga Akisi",
   "Tarot Rehberi",
 ];
+
+function FeaturedPlaceholderVideo() {
+  const [src, setSrc] = useState(STOCK_VIDEOS.showcaseFeaturedLocal);
+  const fallback = STOCK_VIDEOS.showcaseFeatured;
+  return (
+    <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/10 via-lavender/20 to-sage/10 flex items-center justify-center overflow-hidden border border-lavender/20 shadow-xl relative group cursor-pointer">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        aria-hidden
+        src={src}
+        onError={() => setSrc(fallback)}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent" />
+      <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10">
+        <svg className="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+      <p className="absolute bottom-6 left-6 text-white/80 font-heading text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+        Ic Huzura Yolculuk - Rehberli Meditasyon
+      </p>
+    </div>
+  );
+}
+
+function PlaceholderCard({ title, videoSrc, index }: { title: string; videoSrc: string; index: number }) {
+  const [src, setSrc] = useState(videoSrc);
+  return (
+    <ScrollReveal delay={index * 0.1} variant="fadeUp">
+      <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/5 to-lavender/15 flex items-center justify-center border border-lavender/10 cursor-pointer group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          aria-hidden
+          src={src}
+          onError={() => setSrc(STOCK_VIDEOS.showcaseFeatured)}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+        <p className="absolute bottom-2 left-2 right-2 text-xs text-white/90 font-medium text-center drop-shadow-md z-10">
+          {title}
+        </p>
+      </div>
+    </ScrollReveal>
+  );
+}
 
 function VideoThumbnail({
   video,
@@ -77,9 +129,7 @@ export function VideoShowcase({ videos = [] }: VideoShowcaseProps) {
   const hasData = videos.length > 0;
 
   return (
-    <>
-      <WaveDivider color="#FFF8F0" />
-      <section className="py-20 md:py-28 bg-cream-light">
+    <section className="py-20 md:py-28 bg-cream-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-14">
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
@@ -126,27 +176,7 @@ export function VideoShowcase({ videos = [] }: VideoShowcaseProps) {
                 </div>
               </Link>
             ) : (
-              <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/10 via-lavender/20 to-sage/10 flex items-center justify-center overflow-hidden border border-lavender/20 shadow-xl relative group cursor-pointer">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  aria-hidden
-                >
-                  <source src={STOCK_VIDEOS.showcaseFeatured} type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent" />
-                <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10">
-                  <svg className="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-                <p className="absolute bottom-6 left-6 text-white/80 font-heading text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                  Ic Huzura Yolculuk - Rehberli Meditasyon
-                </p>
-              </div>
+              <FeaturedPlaceholderVideo />
             )}
           </ScrollReveal>
 
@@ -157,28 +187,15 @@ export function VideoShowcase({ videos = [] }: VideoShowcaseProps) {
                   <VideoThumbnail key={v.id} video={v} index={i} />
                 ))
               : PLACEHOLDER_TITLES.map((title, i) => (
-                  <ScrollReveal key={title} delay={i * 0.1} variant="fadeUp">
-                    <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/5 to-lavender/15 flex items-center justify-center border border-lavender/10 cursor-pointer group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
-                      <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        aria-hidden
-                      >
-                        <source src={STOCK_VIDEOS.showcaseFeatured} type="video/mp4" />
-                      </video>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                      <p className="absolute bottom-2 left-2 right-2 text-xs text-white/90 font-medium text-center drop-shadow-md z-10">
-                        {title}
-                      </p>
-                    </div>
-                  </ScrollReveal>
+                  <PlaceholderCard
+                    key={title}
+                    title={title}
+                    videoSrc={STOCK_VIDEOS.showcasePlaceholders[i] ?? STOCK_VIDEOS.showcaseFeatured}
+                    index={i}
+                  />
                 ))}
           </div>
         </div>
       </section>
-    </>
   );
 }
