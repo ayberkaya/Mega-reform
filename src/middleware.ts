@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 
+/** Logged-out allowlist: exact path or path/* (e.g. /uzmanlar + /uzmanlar/:path*) */
 const publicRoutes = [
   "/",
   "/giris",
@@ -13,8 +14,7 @@ const publicRoutes = [
   "/iceride-ne-var",
   "/pratikler",
   "/icerikler",
-  "/uzmanlar",
-  "/rehber",
+  "/uzmanlar", // includes /uzmanlar/[slug]
   "/makaleler",
   "/kurslar",
   "/videolar",

@@ -22,7 +22,7 @@ export function ExpertCard({
 
   return (
     <Link
-      href={`/rehber/${slug}`}
+      href={`/uzmanlar/${slug}`}
       className={cn(
         "flex flex-col rounded-2xl border border-lavender/20 bg-white p-6 block",
         "hover:border-primary/30 hover:shadow-lg transition-all duration-200 group"
