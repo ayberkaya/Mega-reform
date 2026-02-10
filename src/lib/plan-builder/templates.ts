@@ -1,165 +1,110 @@
-/** Step 1: pain point option ids (max 2 selectable). */
-export const PAIN_POINT_OPTIONS = [
-  { id: "mind-scattered", label: "Zihnim çok dağınık" },
-  { id: "always-tired", label: "Sürekli yorgun hissediyorum" },
-  { id: "lost-inner-peace", label: "İç huzurumu kaybettim" },
-  { id: "hard-decisions", label: "Karar vermekte zorlanıyorum" },
-  { id: "curious-no-start", label: "Merak ediyorum ama nereden başlayacağımı bilmiyorum" },
+/** Step 1: intention (single select). */
+export const INTENTION_OPTIONS = [
+  { id: "mental-clarity", label: "Zihinsel netlik" },
+  { id: "emotional-balance", label: "Duygusal denge" },
+  { id: "inner-strength", label: "İçsel güçlenme" },
+  { id: "intuition", label: "Sezgilerimi geliştirmek" },
+  { id: "self-knowledge", label: "Kendimi daha iyi tanımak" },
 ] as const;
 
-export type PainPointId = (typeof PAIN_POINT_OPTIONS)[number]["id"];
+export type IntentionId = (typeof INTENTION_OPTIONS)[number]["id"];
 
-/** Step 2: approach (single). */
-export const APPROACH_OPTIONS = [
-  { id: "short-calm", label: "Kısa, sakinleştirici pratikler" },
-  { id: "deep-guided", label: "Derin, rehberli çalışmalar" },
-  { id: "intuitive-tarot", label: "Sezgisel / içgörü odaklı (Tarot)" },
+/** Step 2: current state (multi, max 3). */
+export const CURRENT_STATE_OPTIONS = [
+  { id: "mind-full", label: "Sürekli zihnim dolu" },
+  { id: "procrastination", label: "Ertelemekten yoruldum" },
+  { id: "energy-fluctuating", label: "Enerjim çok dalgalı" },
+  { id: "decision-stuck", label: "Karar verirken tıkanıyorum" },
+  { id: "hard-to-turn-inward", label: "İçime dönmekte zorlanıyorum" },
+  { id: "feel-alone", label: "Yalnız hissediyorum" },
 ] as const;
 
-export type ApproachId = (typeof APPROACH_OPTIONS)[number]["id"];
+export type CurrentStateId = (typeof CURRENT_STATE_OPTIONS)[number]["id"];
 
-/** Step 3: time (single). */
+/** Step 3: approach depth (single). */
+export const APPROACH_DEPTH_OPTIONS = [
+  { id: "light-regular", label: "Hafif ve düzenli" },
+  { id: "balanced-guided", label: "Dengeli ve rehberli" },
+  { id: "deep-transformative", label: "Derin ve dönüştürücü" },
+] as const;
+
+export type ApproachDepthId = (typeof APPROACH_DEPTH_OPTIONS)[number]["id"];
+
+/** Step 4: modality (multi). */
+export const MODALITY_OPTIONS = [
+  { id: "audio", label: "Sesli rehberlik", icon: "audio" },
+  { id: "written", label: "Yazılı farkındalık çalışmaları", icon: "written" },
+  { id: "visual", label: "Görsel anlatım", icon: "visual" },
+  { id: "intuitive", label: "Sezgisel çalışmalar (Tarot / semboller)", icon: "intuitive" },
+] as const;
+
+export type ModalityId = (typeof MODALITY_OPTIONS)[number]["id"];
+
+/** Step 5: time (single). */
 export const TIME_OPTIONS = [
-  { id: "5-10", label: "Günde 5–10 dk" },
-  { id: "15-20", label: "Günde 15–20 dk" },
-  { id: "few-days", label: "Haftada birkaç gün" },
+  { id: "5-7", label: "Günde 5–7 dk", weeklyMinutes: 35 },
+  { id: "10-15", label: "Günde 10–15 dk", weeklyMinutes: 87 },
+  { id: "few-days", label: "Haftada birkaç gün", weeklyMinutes: 45 },
+  { id: "variable", label: "Zamanım değişken", weeklyMinutes: 30 },
 ] as const;
 
 export type TimeId = (typeof TIME_OPTIONS)[number]["id"];
 
-/** Progress step messages (Step 4). */
-export const PROGRESS_MESSAGES = [
-  "Yanıtların analiz ediliyor",
-  "Sana uygun pratikler eşleştiriliyor",
-  "Haftalık denge planı oluşturuluyor",
-  "Rehber seçimi yapılıyor",
+/** Step 6: guidance style (single). */
+export const GUIDANCE_STYLE_OPTIONS = [
+  { id: "calm-supportive", label: "Sakin ve destekleyici" },
+  { id: "clear-directive", label: "Net ve yön gösteren" },
+  { id: "inquiry-deepening", label: "Sorgulatan ve derinleştiren" },
 ] as const;
 
-/** Template: 14-day practice titles per pain point. Used when no content_items match. */
-const PAIN_DAY_TITLES: Record<PainPointId, string[]> = {
-  "mind-scattered": [
-    "Odak nefesi",
-    "Zihin sakinleştirme",
-    "Tek nokta meditasyonu",
-    "Dikkat toplama",
-    "Nefes sayımı",
-    "Mindfulness başlangıç",
-    "Zihin berraklığı",
-    "Kısa odak pratiği",
-    "Nefes farkındalığı",
-    "Düşünce gözlemi",
-    "Sessizlik pratiği",
-    "Odaklanma seti",
-    "Günlük mini meditasyon",
-    "Zihin dinlendirme",
-  ],
-  "always-tired": [
-    "Enerji nefesi",
-    "Dinlenme meditasyonu",
-    "Vücut taraması",
-    "Yorgunluk rahatlatma",
-    "Kısa yenilenme",
-    "Nefesle enerji",
-    "Dinlenme molası",
-    "Gevşeme pratiği",
-    "Uyku hazırlığı",
-    "Enerji dengeleme",
-    "Mini dinlenme",
-    "Stres atma",
-    "Tazelenme nefesi",
-    "Hafif gevşeme",
-  ],
-  "lost-inner-peace": [
-    "İç huzur nefesi",
-    "Şükran meditasyonu",
-    "Kabul pratiği",
-    "Kalp merkezi",
-    "Huzur alanı",
-    "Şimdiki an",
-    "Sevgi nefesi",
-    "İç sessizlik",
-    "Denge meditasyonu",
-    "Güven pratiği",
-    "Huzur nefesi",
-    "Köklenme",
-    "Merkezlenme",
-    "İç barış",
-  ],
-  "hard-decisions": [
-    "Netlik meditasyonu",
-    "Sezgisel dinlenme",
-    "Karar alanı",
-    "İç ses",
-    "Netlik nefesi",
-    "Seçim farkındalığı",
-    "Kısa netlik",
-    "Zihin berraklığı",
-    "Sezgi pratiği",
-    "Karar huzuru",
-    "Odak ve netlik",
-    "İç rehber",
-    "Netlik seti",
-    "Karar meditasyonu",
-  ],
-  "curious-no-start": [
-    "Keşif nefesi",
-    "Başlangıç meditasyonu",
-    "Merak pratiği",
-    "İlk adım",
-    "Kısa giriş",
-    "Temel farkındalık",
-    "Başlangıç seti",
-    "Merak alanı",
-    "Yumuşak giriş",
-    "Keşif meditasyonu",
-    "Temel pratik",
-    "İlk hafta",
-    "Merak nefesi",
-    "Başlangıç dengesi",
-  ],
-};
+export type GuidanceStyleId = (typeof GUIDANCE_STYLE_OPTIONS)[number]["id"];
 
-/** Practice type slug for plan outline. */
-export type PracticeTypeSlug = "audio" | "guided" | "tarot" | "breathing" | "meditation";
+/** Synthesis stage messages (Step 7). Neutral language, no "AI analiz". */
+export const SYNTHESIS_MESSAGES = [
+  "Niyetin ve ihtiyaçların eşleştiriliyor",
+  "Uygun pratik yoğunluğu hesaplanıyor",
+  "Rehber yaklaşımı belirleniyor",
+  "Denge dağılımı ayarlanıyor",
+  "İlk 14 gün yapılandırılıyor",
+] as const;
 
-/** Approach → default practice type and style hint. */
-const APPROACH_STYLE: Record<
-  ApproachId,
-  { primaryType: PracticeTypeSlug; guideCategory: string }
-> = {
-  "short-calm": { primaryType: "breathing", guideCategory: "nefes" },
-  "deep-guided": { primaryType: "guided", guideCategory: "rehberli" },
-  "intuitive-tarot": { primaryType: "tarot", guideCategory: "tarot" },
-};
-
-/** Time → default duration (sec) and sessions per week hint (for weekly minutes calc). */
+/** Time → default duration (sec) and sessions per week for plan generation. */
 export const TIME_CONFIG: Record<
   TimeId,
   { defaultDurationSec: number; sessionsPerWeek: number }
 > = {
-  "5-10": { defaultDurationSec: 420, sessionsPerWeek: 7 }, // ~7 min avg, 7 days
-  "15-20": { defaultDurationSec: 1050, sessionsPerWeek: 7 }, // ~17.5 min, 7 days
-  "few-days": { defaultDurationSec: 900, sessionsPerWeek: 3 }, // 15 min, 3 days
+  "5-7": { defaultDurationSec: 360, sessionsPerWeek: 7 },
+  "10-15": { defaultDurationSec: 750, sessionsPerWeek: 7 },
+  "few-days": { defaultDurationSec: 900, sessionsPerWeek: 3 },
+  variable: { defaultDurationSec: 420, sessionsPerWeek: 4 },
 };
 
-export function getPainPointLabel(id: string): string {
-  return PAIN_POINT_OPTIONS.find((o) => o.id === id)?.label ?? id;
+export function getIntentionLabel(id: string): string {
+  return INTENTION_OPTIONS.find((o) => o.id === id)?.label ?? id;
 }
 
-export function getApproachLabel(id: string): string {
-  return APPROACH_OPTIONS.find((o) => o.id === id)?.label ?? id;
+export function getCurrentStateLabel(id: string): string {
+  return CURRENT_STATE_OPTIONS.find((o) => o.id === id)?.label ?? id;
+}
+
+export function getApproachDepthLabel(id: string): string {
+  return APPROACH_DEPTH_OPTIONS.find((o) => o.id === id)?.label ?? id;
+}
+
+export function getModalityLabel(id: string): string {
+  return MODALITY_OPTIONS.find((o) => o.id === id)?.label ?? id;
 }
 
 export function getTimeLabel(id: string): string {
   return TIME_OPTIONS.find((o) => o.id === id)?.label ?? id;
 }
 
-/** Get 14 day titles for a pain point (template-only). */
-export function getPainDayTitles(painId: PainPointId): string[] {
-  return PAIN_DAY_TITLES[painId] ?? PAIN_DAY_TITLES["curious-no-start"];
+export function getGuidanceStyleLabel(id: string): string {
+  return GUIDANCE_STYLE_OPTIONS.find((o) => o.id === id)?.label ?? id;
 }
 
-/** Get approach style for type/guide category. */
-export function getApproachStyle(approachId: ApproachId) {
-  return APPROACH_STYLE[approachId] ?? APPROACH_STYLE["short-calm"];
+/** Weekly minutes estimate for time option (for live display in Step 5). */
+export function getWeeklyMinutesEstimate(timeId: string): number {
+  const opt = TIME_OPTIONS.find((o) => o.id === timeId);
+  return opt?.weeklyMinutes ?? 35;
 }

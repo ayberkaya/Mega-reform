@@ -23,7 +23,7 @@ export default function LoginPage() {
     setDemoLoading(true);
     const result = await loginDemoUser();
     setDemoLoading(false);
-    if (result.error) {
+    if ("error" in result && result.error) {
       setError(result.error);
     } else {
       router.push("/panel");
@@ -45,7 +45,7 @@ export default function LoginPage() {
     const result = await loginUser(email, password);
     setLoading(false);
 
-    if (result.error) {
+    if ("error" in result && result.error) {
       setError(result.error);
     } else {
       router.push("/panel");
@@ -160,7 +160,7 @@ export default function LoginPage() {
         {process.env.NODE_ENV === "development" && (
           <Button
             type="button"
-            variant="outline"
+            variant="secondary"
             size="lg"
             className="w-full border-amber-500/50 text-amber-200 hover:bg-amber-500/10"
             isLoading={demoLoading}

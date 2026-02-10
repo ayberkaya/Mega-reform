@@ -22,18 +22,14 @@ export default function BaslaPage() {
           </h1>
           <p className="mt-4 text-foreground/70">
             Hedefine ve deneyim seviyene göre haftalık pratik planı hazırlıyoruz.
-            Ücretsiz kayıt ol, planını al.
+            Niyetini seç, planını al.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/kayit"
-              className={cn(
-                "inline-flex items-center justify-center rounded-full h-12 px-8 font-semibold",
-                "bg-primary text-white hover:bg-primary-light transition-colors"
-              )}
-            >
-              Kayıt ol
-            </Link>
+            <PrimaryPlanCta
+              variant="primary"
+              size="lg"
+              className="inline-flex items-center justify-center rounded-full h-12 px-8 font-semibold"
+            />
             <Link
               href="/giris"
               className="inline-flex items-center justify-center rounded-full border-2 border-lavender px-8 py-3 text-sm font-medium text-primary hover:bg-lavender/15 transition-colors"
@@ -41,6 +37,9 @@ export default function BaslaPage() {
               Zaten üyeyim
             </Link>
           </div>
+          <p className="mt-6 text-sm text-foreground/60">
+            Ücretsiz. Planını oluştur, sonra istersen kayıt olup tam erişime geç.
+          </p>
         </div>
       </main>
       <Footer />

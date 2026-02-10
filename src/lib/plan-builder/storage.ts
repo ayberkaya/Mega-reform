@@ -1,5 +1,5 @@
 /** localStorage key for plan builder state. No PII. */
-export const PLAN_STORAGE_KEY = "mr_plan_v1";
+export const PLAN_STORAGE_KEY = "mr_plan_v2";
 
 export interface PlanDayOutline {
   day: number;
@@ -15,18 +15,55 @@ export interface PlanOutline {
   weeklyMinutes: number;
   painChips: string[];
   approachChip: string;
+  /** Chips from intentions, current states, modalities for reveal. */
+  chips: string[];
 }
 
 export interface PlanBuilderAnswers {
-  painPoints: string[];
-  approach: string;
+  intention: string;
+  currentState: string[];
+  approachDepth: string;
+  modalities: string[];
   time: string;
+  guidanceStyle: string;
 }
 
 export interface SavedPlanState {
   answers: PlanBuilderAnswers;
   plan: PlanOutline;
   savedAt: number;
+}
+
+function isValidAnswers(a: unknown): a is PlanBuilderAnswers {
+  if (!a || typeof a !== "object") return false;
+  const o = a as Record<string, unknown>;
+  return (
+    typeof o.intention === "string" &&
+    Array.isArray(o.currentState) &&
+    o.currentState.every((x: unknown) => typeof x === "string") &&
+    typeof o.approachDepth === "string" &&
+    Array.isArray(o.modalities) &&
+    o.modalities.every((x: unknown) => typeof x === "string") &&
+    typeof o.time === "string" &&
+    typeof o.guidanceStyle === "string"
+  );
+}
+
+function isValidPlan(p: unknown): p is PlanOutline {
+  if (!p || typeof p !== "object") return false;
+  const o = p as Record<string, unknown>;
+  return (
+    typeof o.title === "string" &&
+    Array.isArray(o.days) &&
+    o.days.every(
+      (d: unknown) =>
+        d &&
+        typeof d === "object" &&
+        typeof (d as PlanDayOutline).day === "number" &&
+        typeof (d as PlanDayOutline).title === "string"
+    ) &&
+    typeof o.weeklyMinutes === "number"
+  );
 }
 
 export function getSavedPlan(): SavedPlanState | null {
@@ -38,8 +75,8 @@ export function getSavedPlan(): SavedPlanState | null {
     if (
       !parsed ||
       typeof parsed !== "object" ||
-      !Array.isArray((parsed as SavedPlanState).answers?.painPoints) ||
-      !Array.isArray((parsed as SavedPlanState).plan?.days)
+      !isValidAnswers((parsed as SavedPlanState).answers) ||
+      !isValidPlan((parsed as SavedPlanState).plan)
     ) {
       return null;
     }

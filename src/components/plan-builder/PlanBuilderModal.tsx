@@ -10,25 +10,35 @@ import {
   type PlanBuilderAnswers,
   type SavedPlanState,
 } from "@/lib/plan-builder/storage";
-import { generatePlan } from "@/lib/plan-builder/generatePlan";
-import { PROGRESS_MESSAGES } from "@/lib/plan-builder/templates";
+import { generatePlan, getPersonalSentence } from "@/lib/plan-builder/generatePlan";
 import {
-  Step1PainPoints,
-  Step2Approach,
-  Step3Time,
-  Step4Progress,
-  Step5Preview,
-} from "./PlanBuilderSteps";
+  getIntentionLabel,
+  getCurrentStateLabel,
+  getModalityLabel,
+} from "@/lib/plan-builder/templates";
+import {
+  Step1Intention,
+  Step2CurrentState,
+  Step3ApproachDepth,
+  Step4Modality,
+  Step5TimeReality,
+  Step6GuidanceStyle,
+  Step7Synthesis,
+  Step8PlanReveal,
+} from "./steps";
 
-const TOTAL_STEPS = 5;
-const PROGRESS_MSG_DURATION_MS = 1800;
+const TOTAL_STEPS = 8;
+const SYNTHESIS_STAGE_MS = 2600;
 
 const STEP_TITLES: Record<number, string> = {
-  1: "Şu an en çok zorlandığın alan hangisi?",
-  2: "Bu konuda sana ne daha yakın?",
-  3: "Gerçekçi olalım, ne kadar zaman ayırabilirsin?",
-  4: "Planın hazırlanıyor",
-  5: "Planın hazır",
+  1: "Bu yolculuğa hangi niyetle başlıyorsun?",
+  2: "Şu an seni en çok zorlayan şey ne?",
+  3: "Bu yolculuk ne kadar derin olsun?",
+  4: "Hangi tür pratiklerle daha rahat edersin?",
+  5: "Gerçekçi olalım…",
+  6: "Bir rehberden ne beklersin?",
+  7: "Planın oluşturuluyor",
+  8: "Sana özel plan hazır",
 };
 
 export interface PlanBuilderModalProps {
@@ -38,20 +48,22 @@ export interface PlanBuilderModalProps {
 
 export function PlanBuilderModal({ isOpen, onClose }: PlanBuilderModalProps) {
   const [step, setStep] = useState(1);
-  const [painPoints, setPainPoints] = useState<string[]>([]);
-  const [approach, setApproach] = useState<string | null>(null);
+  const [intention, setIntention] = useState<string | null>(null);
+  const [currentState, setCurrentState] = useState<string[]>([]);
+  const [approachDepth, setApproachDepth] = useState<string | null>(null);
+  const [modalities, setModalities] = useState<string[]>([]);
   const [time, setTime] = useState<string | null>(null);
-  const [progressIndex, setProgressIndex] = useState(0);
+  const [guidanceStyle, setGuidanceStyle] = useState<string | null>(null);
+  const [synthesisStage, setSynthesisStage] = useState(0);
   const [generatedPlan, setGeneratedPlan] = useState<SavedPlanState | null>(null);
   const [showFromSaved, setShowFromSaved] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const previousRef = useRef<HTMLButtonElement | null>(null);
 
   const openFromSaved = useCallback(() => {
     const saved = getSavedPlan();
     if (saved) {
       setGeneratedPlan(saved);
-      setStep(5);
+      setStep(8);
       setShowFromSaved(true);
     } else {
       setStep(1);
@@ -64,84 +76,88 @@ export function PlanBuilderModal({ isOpen, onClose }: PlanBuilderModalProps) {
     const saved = getSavedPlan();
     if (saved) {
       setGeneratedPlan(saved);
-      setStep(5);
+      setStep(8);
       setShowFromSaved(true);
     } else {
       setStep(1);
-      setPainPoints([]);
-      setApproach(null);
+      setIntention(null);
+      setCurrentState([]);
+      setApproachDepth(null);
+      setModalities([]);
       setTime(null);
+      setGuidanceStyle(null);
       setGeneratedPlan(null);
       setShowFromSaved(false);
+      setSynthesisStage(0);
     }
-    setProgressIndex(0);
   }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
-    const t = setTimeout(() => {
-      window.dispatchEvent(
-        new CustomEvent("mr_plan_step", { detail: { step } })
-      );
-    }, 0);
-    return () => clearTimeout(t);
+    window.dispatchEvent(new CustomEvent("mr_plan_step", { detail: { step } }));
   }, [isOpen, step]);
 
   useEffect(() => {
-    if (step !== 4) return;
-    if (progressIndex >= PROGRESS_MESSAGES.length) {
+    if (step !== 7) return;
+    const stages = 5;
+    if (synthesisStage >= stages) {
       const answers: PlanBuilderAnswers = {
-        painPoints,
-        approach: approach!,
+        intention: intention!,
+        currentState,
+        approachDepth: approachDepth!,
+        modalities,
         time: time!,
+        guidanceStyle: guidanceStyle!,
       };
       const plan = generatePlan(answers);
-      const state: SavedPlanState = {
-        answers,
-        plan,
-        savedAt: Date.now(),
-      };
+      const state: SavedPlanState = { answers, plan, savedAt: Date.now() };
       savePlan(state);
       setGeneratedPlan(state);
-      setStep(5);
+      setStep(8);
       setShowFromSaved(false);
       window.dispatchEvent(new CustomEvent("mr_plan_complete"));
       return;
     }
-    const id = setTimeout(() => {
-      setProgressIndex((i) => i + 1);
-    }, PROGRESS_MSG_DURATION_MS);
+    const id = setTimeout(() => setSynthesisStage((s) => s + 1), SYNTHESIS_STAGE_MS);
     return () => clearTimeout(id);
-  }, [step, progressIndex, painPoints, approach, time]);
+  }, [step, synthesisStage, intention, currentState, approachDepth, modalities, time, guidanceStyle]);
 
   const goNext = useCallback(() => {
-    if (step === 1 && painPoints.length > 0) setStep(2);
-    else if (step === 2 && approach) setStep(3);
-    else if (step === 3 && time) setStep(4);
-  }, [step, painPoints.length, approach, time]);
+    if (step === 1 && intention) setStep(2);
+    else if (step === 2 && currentState.length > 0) setStep(3);
+    else if (step === 3 && approachDepth) setStep(4);
+    else if (step === 4 && modalities.length > 0) setStep(5);
+    else if (step === 5 && time) setStep(6);
+    else if (step === 6 && guidanceStyle) setStep(7);
+  }, [step, intention, currentState, approachDepth, modalities, time, guidanceStyle]);
 
   const goBack = useCallback(() => {
-    if (step > 1 && step < 5) setStep(step - 1);
+    if (step > 1 && step < 7) setStep(step - 1);
   }, [step]);
 
   const canNext =
-    (step === 1 && painPoints.length > 0) ||
-    (step === 2 && approach) ||
-    (step === 3 && time);
-  const showBack = step >= 2 && step <= 4;
+    (step === 1 && intention) ||
+    (step === 2 && currentState.length > 0) ||
+    (step === 3 && approachDepth) ||
+    (step === 4 && modalities.length > 0) ||
+    (step === 5 && time) ||
+    (step === 6 && guidanceStyle);
+  const showBack = step >= 2 && step <= 6;
 
-  const handleClose = useCallback(() => {
-    onClose();
-  }, [onClose]);
+  const handleClose = useCallback(() => onClose(), [onClose]);
 
   const handleReset = useCallback(() => {
     clearSavedPlan();
     setGeneratedPlan(null);
     setStep(1);
-    setPainPoints([]);
-    setApproach(null);
+    setIntention(null);
+    setCurrentState([]);
+    setApproachDepth(null);
+    setModalities([]);
     setTime(null);
+    setGuidanceStyle(null);
     setShowFromSaved(false);
+    setSynthesisStage(0);
   }, []);
 
   const handleOpenPlan = useCallback(() => {
@@ -194,6 +210,12 @@ export function PlanBuilderModal({ isOpen, onClose }: PlanBuilderModalProps) {
     return () => containerRef.current?.removeEventListener("keydown", onKeyDown);
   }, [isOpen, step]);
 
+  const synthesisKeywords = [
+    intention ? getIntentionLabel(intention) : null,
+    ...currentState.map(getCurrentStateLabel),
+    ...modalities.map(getModalityLabel),
+  ].filter(Boolean) as string[];
+
   if (!isOpen) return null;
 
   const content = (
@@ -211,16 +233,15 @@ export function PlanBuilderModal({ isOpen, onClose }: PlanBuilderModalProps) {
       />
       <div
         ref={containerRef}
-        className="relative w-full max-w-lg rounded-2xl border border-lavender/20 bg-white shadow-xl"
+        className="relative flex max-h-[90vh] w-full max-w-lg flex-col rounded-2xl border border-lavender/20 bg-white shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-lavender/20 px-4 py-3">
+        <div className="flex shrink-0 items-center justify-between border-b border-lavender/20 px-4 py-3">
           <span className="text-sm font-medium text-foreground/70">
             {step}/{TOTAL_STEPS}
           </span>
           <button
             type="button"
-            ref={previousRef}
             onClick={handleClose}
             className="rounded-full p-2 text-foreground/70 transition-colors hover:bg-lavender/20 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-lavender"
             aria-label="Kapat"
@@ -229,7 +250,7 @@ export function PlanBuilderModal({ isOpen, onClose }: PlanBuilderModalProps) {
           </button>
         </div>
         <div
-          className="h-1 bg-lavender/20"
+          className="h-1 shrink-0 bg-lavender/20"
           role="progressbar"
           aria-valuenow={step}
           aria-valuemin={1}
@@ -240,7 +261,7 @@ export function PlanBuilderModal({ isOpen, onClose }: PlanBuilderModalProps) {
             style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
           />
         </div>
-        <div className="p-6">
+        <div className="min-h-0 flex-1 overflow-y-auto p-6">
           <h2
             id="plan-builder-title"
             className="font-heading text-xl font-semibold text-foreground"
@@ -252,23 +273,42 @@ export function PlanBuilderModal({ isOpen, onClose }: PlanBuilderModalProps) {
           </p>
           <div className="mt-4">
             {step === 1 && (
-              <Step1PainPoints
-                selected={painPoints}
-                onChange={setPainPoints}
-              />
+              <Step1Intention selected={intention} onChange={setIntention} />
             )}
             {step === 2 && (
-              <Step2Approach selected={approach} onChange={setApproach} />
+              <Step2CurrentState
+                selected={currentState}
+                onChange={setCurrentState}
+              />
             )}
             {step === 3 && (
-              <Step3Time selected={time} onChange={setTime} />
+              <Step3ApproachDepth
+                selected={approachDepth}
+                onChange={setApproachDepth}
+              />
             )}
             {step === 4 && (
-              <Step4Progress currentMessageIndex={progressIndex} />
+              <Step4Modality selected={modalities} onChange={setModalities} />
             )}
-            {step === 5 && generatedPlan && (
-              <Step5Preview
+            {step === 5 && (
+              <Step5TimeReality selected={time} onChange={setTime} />
+            )}
+            {step === 6 && (
+              <Step6GuidanceStyle
+                selected={guidanceStyle}
+                onChange={setGuidanceStyle}
+              />
+            )}
+            {step === 7 && (
+              <Step7Synthesis
+                currentStageIndex={synthesisStage}
+                keywords={synthesisKeywords}
+              />
+            )}
+            {step === 8 && generatedPlan && (
+              <Step8PlanReveal
                 plan={generatedPlan.plan}
+                personalSentence={getPersonalSentence(generatedPlan.answers)}
                 onOpenPlan={handleOpenPlan}
                 onBrowseCatalog={handleBrowseCatalog}
                 onReset={handleReset}
@@ -276,7 +316,7 @@ export function PlanBuilderModal({ isOpen, onClose }: PlanBuilderModalProps) {
               />
             )}
           </div>
-          {step <= 3 && (
+          {step <= 6 && (
             <div className="mt-6 flex gap-2">
               {showBack && (
                 <button

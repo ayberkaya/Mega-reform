@@ -1,72 +1,181 @@
 import type { PlanDayOutline, PlanOutline, PlanBuilderAnswers } from "./storage";
 import {
-  getPainDayTitles,
-  getApproachStyle,
-  getPainPointLabel,
-  getApproachLabel,
+  getIntentionLabel,
+  getCurrentStateLabel,
+  getApproachDepthLabel,
+  getModalityLabel,
+  getGuidanceStyleLabel,
   TIME_CONFIG,
-  type PainPointId,
-  type ApproachId,
+  type IntentionId,
+  type CurrentStateId,
+  type ApproachDepthId,
   type TimeId,
+  type GuidanceStyleId,
 } from "./templates";
 
-/** Content item list fields only (no fullUrl/fullText). Optional match for plan days. */
-export interface ContentItemListFields {
-  id: string;
-  title?: string | null;
-  guideName?: string | null;
-  type?: string | null;
-  durationSec?: number | null;
-  tags?: string[] | null;
-  goal?: string | null;
+/** Deterministic hash-like seed from answers for stable variation. */
+function seedFromAnswers(a: PlanBuilderAnswers): number {
+  const s =
+    a.intention +
+    a.currentState.join(",") +
+    a.approachDepth +
+    a.modalities.join(",") +
+    a.time +
+    a.guidanceStyle;
+  let h = 0;
+  for (let i = 0; i < s.length; i++) {
+    h = (h << 5) - h + s.charCodeAt(i);
+    h |= 0;
+  }
+  return Math.abs(h);
 }
 
-const PLAN_TITLE = "14 Günlük Kişisel Plan";
+/** Plan title templates: intention + depth influence wording. */
+const TITLE_TEMPLATES: Record<string, string[]> = {
+  "mental-clarity": [
+    "Zihinsel Netlik için 14 Günlük Yol Haritası",
+    "Netlik ve Odak: 14 Günlük Plan",
+  ],
+  "emotional-balance": [
+    "Denge ve Netlik için 14 Günlük Yol Haritası",
+    "Duygusal Denge: 14 Günlük Rehber",
+  ],
+  "inner-strength": [
+    "İçsel Güçlenme için 14 Günlük Yol Haritası",
+    "İçsel Güç: 14 Günlük Plan",
+  ],
+  intuition: [
+    "Sezgi ve Farkındalık: 14 Günlük Yol Haritası",
+    "Sezgilerini Geliştir: 14 Günlük Plan",
+  ],
+  "self-knowledge": [
+    "Kendini Tanıma: 14 Günlük Yol Haritası",
+    "İç Keşif: 14 Günlük Plan",
+  ],
+};
+
+/** Day practice titles by intention (14 each). Different intentions = different plans. */
+const DAY_TITLES_BY_INTENTION: Record<string, string[]> = {
+  "mental-clarity": [
+    "Odak nefesi",
+    "Zihin sakinleştirme",
+    "Tek nokta meditasyonu",
+    "Dikkat toplama",
+    "Nefes sayımı",
+    "Mindfulness başlangıç",
+    "Zihin berraklığı",
+    "Kısa odak pratiği",
+    "Nefes farkındalığı",
+    "Düşünce gözlemi",
+    "Sessizlik pratiği",
+    "Odaklanma seti",
+    "Günlük mini meditasyon",
+    "Zihin dinlendirme",
+  ],
+  "emotional-balance": [
+    "Duygu farkındalığı",
+    "Denge nefesi",
+    "Kabul pratiği",
+    "Kalp merkezi",
+    "Duygusal köklenme",
+    "Şimdiki an",
+    "Sevgi nefesi",
+    "İç sessizlik",
+    "Denge meditasyonu",
+    "Güven pratiği",
+    "Huzur nefesi",
+    "Duygu gözlemi",
+    "Merkezlenme",
+    "İç barış",
+  ],
+  "inner-strength": [
+    "Güç nefesi",
+    "Köklenme meditasyonu",
+    "İç kaynak",
+    "Dayanıklılık pratiği",
+    "Sınır farkındalığı",
+    "Güven alanı",
+    "Nefesle güç",
+    "Durabilme pratiği",
+    "İçsel dayanak",
+    "Cesaret nefesi",
+    "Kabul ve güç",
+    "Merkez meditasyonu",
+    "Günlük köklenme",
+    "İçsel denge",
+  ],
+  intuition: [
+    "Sezgi nefesi",
+    "İç ses dinleme",
+    "Sembol farkındalığı",
+    "Sezgisel alan",
+    "Sessiz bilgelik",
+    "İç rehber",
+    "Sezgi meditasyonu",
+    "Farkındalık pratiği",
+    "Sezgisel dinlenme",
+    "İç bilgi",
+    "Sezgi nefesi",
+    "Derin dinleme",
+    "Sezgisel netlik",
+    "İç ışık",
+  ],
+  "self-knowledge": [
+    "Kendini tanıma nefesi",
+    "İç keşif",
+    "Kimlik farkındalığı",
+    "Değerler pratiği",
+    "Öz-şefkat",
+    "İç gözlem",
+    "Kabul meditasyonu",
+    "Kendini dinleme",
+    "Öz farkındalık",
+    "İç yolculuk",
+    "Kendini tanıma seti",
+    "Derin dinlenme",
+    "Öz keşif",
+    "İç bütünlük",
+  ],
+};
+
+const DEFAULT_DAY_TITLES = DAY_TITLES_BY_INTENTION["mental-clarity"]!;
+
+/** Primary practice type from modalities + guidance. */
+function getPrimaryType(
+  modalities: string[],
+  guidanceStyle: string
+): "audio" | "guided" | "written" | "visual" | "tarot" {
+  if (modalities.includes("intuitive")) return "tarot";
+  if (modalities.includes("audio")) return "audio";
+  if (modalities.includes("visual")) return "visual";
+  if (modalities.includes("written")) return "written";
+  return "guided";
+}
 
 /**
- * Deterministic 14-day plan from answers. Uses templates; optionally fills from contentItems (list fields only).
+ * Deterministic 14-day plan from answers. Different combinations yield visibly different plans.
  */
-export function generatePlan(
-  answers: PlanBuilderAnswers,
-  contentItems?: ContentItemListFields[] | null
-): PlanOutline {
-  const [pain1, pain2] = answers.painPoints as (PainPointId | undefined)[];
-  const approach = answers.approach as ApproachId;
-  const timeId = answers.time as TimeId;
+export function generatePlan(answers: PlanBuilderAnswers): PlanOutline {
+  const seed = seedFromAnswers(answers);
+  const timeConfig = TIME_CONFIG[answers.time as TimeId] ?? TIME_CONFIG["5-7"];
+  const intention = answers.intention as IntentionId;
+  const titlesPool =
+    DAY_TITLES_BY_INTENTION[intention] ?? DEFAULT_DAY_TITLES;
 
-  const timeConfig = TIME_CONFIG[timeId] ?? TIME_CONFIG["5-10"];
-  const style = getApproachStyle(approach);
+  const titleTemplates = TITLE_TEMPLATES[intention] ?? TITLE_TEMPLATES["mental-clarity"]!;
+  const titleIndex = seed % titleTemplates.length;
+  const planTitle = titleTemplates[titleIndex]!;
 
-  const titles1 = pain1 ? getPainDayTitles(pain1) : [];
-  const titles2 = pain2 ? getPainDayTitles(pain2) : [];
-  const combinedTitles = mergeDayTitles(titles1, titles2, 14);
-
-  const days: PlanDayOutline[] = combinedTitles.map((title, i) => {
+  const days: PlanDayOutline[] = titlesPool.map((title, i) => {
     const day = i + 1;
-    let durationSec = timeConfig.defaultDurationSec;
-    let type = style.primaryType;
-    let suggestedGuideCategory = style.guideCategory;
-
-    if (contentItems && contentItems.length > 0) {
-      const match = findBestContentMatch(
-        contentItems,
-        day,
-        pain1,
-        pain2,
-        approach,
-        timeConfig.defaultDurationSec
-      );
-      if (match) {
-        return {
-          day,
-          title: match.title ?? title,
-          durationSec: match.durationSec ?? durationSec,
-          type: match.type ?? type,
-          suggestedGuideCategory: match.suggestedGuideCategory ?? suggestedGuideCategory,
-        };
-      }
-    }
-
+    const durationSec = timeConfig.defaultDurationSec;
+    const type = getPrimaryType(answers.modalities, answers.guidanceStyle);
+    const suggestedGuideCategory =
+      answers.guidanceStyle === "calm-supportive"
+        ? "sakin"
+        : answers.guidanceStyle === "clear-directive"
+          ? "net"
+          : "sorgulayan";
     return {
       day,
       title,
@@ -80,61 +189,37 @@ export function generatePlan(
     (timeConfig.defaultDurationSec * timeConfig.sessionsPerWeek) / 60
   );
 
-  const painChips = answers.painPoints.map((id) => getPainPointLabel(id));
-  const approachChip = getApproachLabel(approach);
+  const painChips = answers.currentState.map((id) => getCurrentStateLabel(id));
+  const approachChip = getApproachDepthLabel(answers.approachDepth);
+
+  const chips: string[] = [
+    getIntentionLabel(answers.intention),
+    ...answers.currentState.map(getCurrentStateLabel),
+    ...answers.modalities.map(getModalityLabel),
+  ];
 
   return {
-    title: PLAN_TITLE,
+    title: planTitle,
     days,
     weeklyMinutes,
     painChips,
     approachChip,
+    chips,
   };
 }
 
-function mergeDayTitles(a: string[], b: string[], count: number): string[] {
-  const out: string[] = [];
-  for (let i = 0; i < count; i++) {
-    if (a[i] && b[i]) {
-      out.push(i % 2 === 0 ? a[i]! : b[i]!);
-    } else {
-      out.push(a[i] ?? b[i] ?? `Gün ${i + 1} pratiği`);
-    }
+/** Short personalized sentence for plan reveal (Step 8). */
+export function getPersonalSentence(answers: PlanBuilderAnswers): string {
+  const intentionLabel = getIntentionLabel(answers.intention);
+  const depthLabel = getApproachDepthLabel(answers.approachDepth);
+  const parts: string[] = [];
+  parts.push(`Bu plan, ${intentionLabel.toLowerCase()} odağında,`);
+  if (answers.approachDepth === "light-regular") {
+    parts.push("hafif ama sürdürülebilir bir ritimle ilerler.");
+  } else if (answers.approachDepth === "balanced-guided") {
+    parts.push("dengeli ve rehberli bir yol haritasıyla ilerler.");
+  } else {
+    parts.push("derin ve dönüştürücü bir ritimle ilerler.");
   }
-  return out;
-}
-
-function findBestContentMatch(
-  items: ContentItemListFields[],
-  day: number,
-  pain1?: PainPointId,
-  pain2?: PainPointId,
-  approach?: ApproachId,
-  preferredDurationSec?: number
-): Partial<PlanDayOutline> | null {
-  const painGoals = new Set<string>();
-  if (pain1) painGoals.add(pain1);
-  if (pain2) painGoals.add(pain2);
-
-  const byGoal = items.filter((item) => {
-    const g = item.goal?.toLowerCase();
-    const tags = (item.tags ?? []).map((t) => t.toLowerCase());
-    if (!g && tags.length === 0) return true;
-    return (
-      (g && painGoals.has(g as PainPointId)) ||
-      tags.some((t) => painGoals.has(t as PainPointId))
-    );
-  });
-  const pool = byGoal.length > 0 ? byGoal : items;
-
-  const idx = (day - 1) % pool.length;
-  const item = pool[idx];
-  if (!item) return null;
-
-  return {
-    title: item.title ?? undefined,
-    durationSec: item.durationSec ?? preferredDurationSec ?? undefined,
-    type: item.type ?? undefined,
-    suggestedGuideCategory: item.guideName ?? undefined,
-  };
+  return parts.join(" ");
 }

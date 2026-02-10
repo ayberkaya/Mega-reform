@@ -77,6 +77,44 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Plan builder: breathing glow on selected card */
+@keyframes plan-card-glow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(45, 27, 78, 0.15), 0 0 20px rgba(211, 211, 255, 0.3); }
+  50% { box-shadow: 0 0 0 2px rgba(45, 27, 78, 0.25), 0 0 28px rgba(211, 211, 255, 0.5); }
+}
+
+/* Plan builder: card stagger (fade + Y) */
+@keyframes plan-card-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Plan builder: haptic-like scale on select */
+@keyframes plan-select-pop {
+  0% { transform: scale(0.98); }
+  60% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+/* Plan builder: synthesis rotating shape */
+@keyframes plan-synthesis-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Plan builder: floating keyword fade */
+@keyframes plan-keyword-float {
+  0%, 100% { opacity: 0.4; transform: translateY(0) scale(0.95); }
+  50% { opacity: 0.9; transform: translateY(-4px) scale(1); }
+}
+
+/* Plan builder: progress bar indeterminate (looping) */
+@keyframes plan-progress-loop {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
