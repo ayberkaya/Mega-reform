@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
 import { tr } from "@/content/tr";
+import { STOCK_VIDEOS } from "@/lib/utils/constants";
 
 interface Course {
   title: string;
@@ -69,17 +70,25 @@ export function CoursePreview() {
                   i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 } gap-8 items-center`}
               >
-                {/* Image placeholder */}
+                {/* Video / thumbnail */}
                 <div className="w-full md:w-1/2">
                   <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/10 to-lavender/30 flex items-center justify-center overflow-hidden relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-sage/10" />
-                    <svg
-                      className="w-16 h-16 text-primary/20"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover"
+                      aria-hidden
                     >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+                      <source src={STOCK_VIDEOS.coursePreview} type="video/mp4" />
+                    </video>
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
+                    <div className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg relative z-10">
+                      <svg className="w-6 h-6 text-primary ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
 

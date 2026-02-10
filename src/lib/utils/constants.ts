@@ -70,3 +70,13 @@ export const NAV_LINKS = [
   { href: "/makaleler", label: "Makaleler" },
   { href: "/kurslar", label: "Kurslar" },
 ] as const;
+
+/** Theme-appropriate stock videos (meditation, nature, calm). Hero: local file; others: Pexels. */
+export const STOCK_VIDEOS = {
+  /** Hero arka plan – public/videos/hero-bg.mp4 varsa bu kullanılır. */
+  heroBackground: "/videos/hero-bg.mp4",
+  showcaseFeatured:
+    "https://videos.pexels.com/video-files/3571264/3571264-hd_720_1280_25fps.mp4",
+  coursePreview:
+    "https://videos.pexels.com/video-files/3571095/3571095-hd_720_1280_25fps.mp4",
+} as const;

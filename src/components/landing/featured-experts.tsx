@@ -55,7 +55,7 @@ const DEMO_EXPERTS: Expert[] = [
 
 export function FeaturedExperts() {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-cream-light to-white">
+    <section className="pt-20 md:pt-28 pb-0 bg-gradient-to-b from-cream-light to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal className="text-center mb-14">
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">

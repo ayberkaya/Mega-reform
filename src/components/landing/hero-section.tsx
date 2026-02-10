@@ -9,13 +9,28 @@ import { BreathingCircle } from "@/components/animations/breathing-circle";
 import { CursorGlow } from "@/components/animations/cursor-glow";
 import { TextReveal } from "@/components/animations/text-reveal";
 import { tr } from "@/content/tr";
+import { STOCK_VIDEOS } from "@/lib/utils/constants";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary-dark via-primary to-primary-light">
-      {/* Background layers */}
-      <FloatingParticles count={50} />
-      <GradientOrb
+      {/* Stock video background – muted, no sound, theme-appropriate */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
+        aria-hidden
+      >
+        <source src={STOCK_VIDEOS.heroBackground} type="video/mp4" />
+      </video>
+      {/* Gradient overlay so text stays readable */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/80 via-primary/70 to-primary-light/80 z-[1]" />
+      {/* Background layers – above overlay so orbs/particles visible */}
+      <div className="absolute inset-0 z-[2] pointer-events-none">
+        <FloatingParticles count={50} />
+        <GradientOrb
         size={500}
         color1="rgba(74, 45, 122, 0.5)"
         color2="rgba(211, 211, 255, 0.15)"
@@ -34,8 +49,9 @@ export function HeroSection() {
         color2="transparent"
         className="top-[30%] right-[20%]"
         delay={8}
-      />
-      <CursorGlow />
+        />
+        <CursorGlow />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">

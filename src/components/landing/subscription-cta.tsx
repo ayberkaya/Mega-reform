@@ -9,7 +9,7 @@ import { tr } from "@/content/tr";
 
 export function SubscriptionCta() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-r from-primary-dark via-primary to-primary-light">
+    <section className="relative pt-[10px] pb-24 md:pb-32 overflow-hidden bg-gradient-to-r from-primary-dark via-primary to-primary-light">
       {/* Orbs */}
       <GradientOrb
         size={350}

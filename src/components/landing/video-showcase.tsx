@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
 import { WaveDivider } from "@/components/animations/wave-divider";
 import { tr } from "@/content/tr";
+import { STOCK_VIDEOS } from "@/lib/utils/constants";
 
 export type VideoShowcaseVideo = {
   id: string;
@@ -43,13 +44,16 @@ function VideoThumbnail({
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
       ) : (
-        <svg
-          className="w-8 h-8 text-primary/30 group-hover:text-primary/50 transition-colors"
-          fill="currentColor"
-          viewBox="0 0 24 24"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          aria-hidden
         >
-          <path d="M8 5v14l11-7z" />
-        </svg>
+          <source src={STOCK_VIDEOS.showcaseFeatured} type="video/mp4" />
+        </video>
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       <p className="absolute bottom-2 left-2 right-2 text-xs text-white/90 font-medium text-center drop-shadow-md">
@@ -91,13 +95,24 @@ export function VideoShowcase({ videos = [] }: VideoShowcaseProps) {
             {featured ? (
               <Link href={`/videolar?video=${featured.id}`} className="block">
                 <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/10 via-lavender/20 to-sage/10 flex items-center justify-center overflow-hidden border border-lavender/20 shadow-xl relative group cursor-pointer">
-                  {featured.thumbnailUrl && (
+                  {featured.thumbnailUrl ? (
                     <Image
                       src={featured.thumbnailUrl}
                       alt={featured.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
+                  ) : (
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      aria-hidden
+                    >
+                      <source src={STOCK_VIDEOS.showcaseFeatured} type="video/mp4" />
+                    </video>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10">
@@ -112,12 +127,23 @@ export function VideoShowcase({ videos = [] }: VideoShowcaseProps) {
               </Link>
             ) : (
               <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/10 via-lavender/20 to-sage/10 flex items-center justify-center overflow-hidden border border-lavender/20 shadow-xl relative group cursor-pointer">
-                <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  aria-hidden
+                >
+                  <source src={STOCK_VIDEOS.showcaseFeatured} type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent" />
+                <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10">
                   <svg className="w-8 h-8 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
-                <p className="absolute bottom-6 left-6 text-white/80 font-heading text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="absolute bottom-6 left-6 text-white/80 font-heading text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                   Ic Huzura Yolculuk - Rehberli Meditasyon
                 </p>
               </div>
@@ -133,10 +159,18 @@ export function VideoShowcase({ videos = [] }: VideoShowcaseProps) {
               : PLACEHOLDER_TITLES.map((title, i) => (
                   <ScrollReveal key={title} delay={i * 0.1} variant="fadeUp">
                     <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/5 to-lavender/15 flex items-center justify-center border border-lavender/10 cursor-pointer group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
-                      <svg className="w-8 h-8 text-primary/30 group-hover:text-primary/50 transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                      <p className="absolute bottom-2 left-2 right-2 text-xs text-primary/60 font-medium text-center">
+                      <video
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        aria-hidden
+                      >
+                        <source src={STOCK_VIDEOS.showcaseFeatured} type="video/mp4" />
+                      </video>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <p className="absolute bottom-2 left-2 right-2 text-xs text-white/90 font-medium text-center drop-shadow-md z-10">
                         {title}
                       </p>
                     </div>
