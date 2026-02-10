@@ -152,11 +152,11 @@ export function ExpertListingClient({
               </svg>
             </div>
             <h3 className="font-heading text-xl font-bold text-primary mb-2">
-              Sonuc bulunamadi
+              Sonuç bulunamadı
             </h3>
             <p className="max-w-sm text-sm text-foreground/50">
-              Aradiginiz kriterlere uygun uzman bulunamadi. Farkli bir kategori
-              veya arama terimi deneyerek yolculugunuza eslik edecek uzmani
+              Aradığınız kriterlere uygun uzman bulunamadı. Farklı bir kategori
+              veya arama terimi deneyerek yolculuğunuza eşlik edecek uzmanı
               bulabilirsiniz.
             </p>
           </motion.div>

@@ -16,6 +16,8 @@ interface ExpertCardProps {
   bio?: string | null;
   isVerified?: boolean;
   yearsExperience?: number | null;
+  /** Trust line: "X içerik" when provided */
+  contentCount?: number | null;
 }
 
 export function ExpertCard({
@@ -29,11 +31,12 @@ export function ExpertCard({
   bio,
   isVerified,
   yearsExperience,
+  contentCount,
 }: ExpertCardProps) {
   return (
-    <Link href={`/uzmanlar/${slug}`} className="group block">
-      <Card className="h-full overflow-hidden">
-        <CardContent className="flex flex-col items-center text-center gap-4">
+    <Link href={`/uzmanlar/${slug}`} className="group block h-full">
+      <Card className="h-full overflow-hidden transition-shadow group-hover:shadow-lg">
+        <CardContent className="flex flex-col items-center text-center gap-4 p-5">
           {/* Avatar */}
           <div className="relative">
             <Avatar
@@ -46,7 +49,7 @@ export function ExpertCard({
             {isVerified && (
               <span
                 className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-sage text-white shadow-md"
-                title="Dogrulanmis Uzman"
+                title="Doğrulanmış Uzman"
               >
                 <svg
                   className="h-3.5 w-3.5"
@@ -82,12 +85,17 @@ export function ExpertCard({
             </span>
           </div>
 
-          {/* Experience */}
-          {yearsExperience != null && yearsExperience > 0 && (
-            <p className="text-xs font-medium text-gold">
-              {yearsExperience} yıl deneyim
-            </p>
-          )}
+          {/* Trust lines: X içerik, Y yıl deneyim */}
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-foreground/60">
+            {contentCount != null && contentCount > 0 && (
+              <span>{contentCount} içerik</span>
+            )}
+            {yearsExperience != null && yearsExperience > 0 && (
+              <span className="font-medium text-gold">
+                {yearsExperience} yıl deneyim
+              </span>
+            )}
+          </div>
 
           {/* Specialties */}
           {specialties.length > 0 && (

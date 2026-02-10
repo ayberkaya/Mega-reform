@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { PrimaryPlanCta } from "@/components/cta/PrimaryPlanCta";
 import { FloatingParticles } from "@/components/animations/floating-particles";
 import { GradientOrb } from "@/components/animations/gradient-orb";
 import { BreathingCircle } from "@/components/animations/breathing-circle";
@@ -65,23 +66,20 @@ export function HeroSection() {
           {tr.landing.heroSubtitle}
         </motion.p>
 
-        {/* CTAs */}
+        {/* CTAs: single primary CTA + secondary link */}
         <motion.div
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <Button variant="gold" size="lg">
-            {tr.landing.heroCta}
-          </Button>
-          <Button
-            variant="ghost"
-            size="lg"
-            className="text-white/90 hover:text-white border border-white/20 hover:bg-white/10"
+          <PrimaryPlanCta variant="gold" size="lg" className="shadow-lg" />
+          <Link
+            href="/iceride-ne-var"
+            className="inline-flex items-center justify-center rounded-full h-13 px-8 text-lg border-2 border-white/30 text-white/90 hover:text-white hover:bg-white/10 transition-colors font-medium"
           >
-            {tr.landing.heroCtaSecondary}
-          </Button>
+            İçeride ne var?
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -32,3 +32,8 @@ export function formatDuration(minutes: number): string {
   const mins = minutes % 60;
   return mins > 0 ? `${hours} sa ${mins} dk` : `${hours} saat`;
 }
+
+export function formatDurationSec(seconds: number): string {
+  const mins = Math.round(seconds / 60);
+  return formatDuration(mins);
+}

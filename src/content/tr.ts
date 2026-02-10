@@ -139,4 +139,28 @@ export const tr = {
     faq: "Sıkça Sorulan Sorular",
     rights: "Tüm hakları saklıdır.",
   },
+  icerikler: {
+    title: "İçerikler",
+    subtitle: "Dönüşümü destekleyen yazılar. Sınırlı, seçilmiş içerik.",
+    noArticles: "Henüz yayınlanmış makale yok.",
+    readTime: "dk okuma",
+    readArticle: "Yazıyı oku",
+    ctaTitle: "Kişisel planını oluştur",
+    ctaSubtitle: "Üyelikle tüm içeriğe eriş, rehberli pratiklerle ilerle.",
+  },
+  rehber: {
+    title: "Rehber",
+    believesIn: "Bu rehber neye inanır?",
+    suitableFor: "Kimler için uygun",
+    notSuitableFor: "Kimler için uygun değil",
+    content: "İçerikler",
+    noContent: "Henüz içerik yok.",
+    articles: "Makaleler",
+    readArticle: "Yazıyı oku",
+    courses: "Kurslar",
+    viewCourse: "Kursa git",
+  },
+  rehberler: {
+    profileCta: "Profili gör",
+  },
 } as const;

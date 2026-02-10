@@ -7,7 +7,7 @@ import { ExpertListingClient } from "@/components/experts/expert-listing-client"
 
 export const revalidate = 3600; // 1 hr
 export const metadata: Metadata = {
-  title: "Uzmanlarimiz | Mega Reform",
+  title: "Uzmanlarımız | Mega Reform",
   description:
     "Alanında deneyimli, güvenilir rehberlerle tanışın. Meditasyon, yoga, tarot ve ruhsal gelişim uzmanlarımızı keşfedin.",
 };

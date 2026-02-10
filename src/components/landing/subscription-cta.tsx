@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { PrimaryPlanCta } from "@/components/cta/PrimaryPlanCta";
 import { GradientOrb } from "@/components/animations/gradient-orb";
 import { BreathingCircle } from "@/components/animations/breathing-circle";
 import { ScrollReveal } from "@/components/animations/scroll-reveal";
@@ -46,9 +46,7 @@ export function SubscriptionCta() {
               <CheckIcon /> Uzman danismanligi
             </span>
           </div>
-          <Button variant="gold" size="xl">
-            {tr.landing.subscriptionCta}
-          </Button>
+          <PrimaryPlanCta variant="gold" size="xl" />
         </ScrollReveal>
       </div>
     </section>

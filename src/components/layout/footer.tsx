@@ -26,7 +26,7 @@ export function Footer() {
               {SITE_NAME}
             </h3>
             <p className="text-white/60 text-sm leading-relaxed mb-6">
-              Meditasyon, yoga, tarot ve ruhsal gelisim icin uzman rehberlik
+              Meditasyon, yoga, tarot ve ruhsal gelişim için uzman rehberlik
               platformu. İç huzurunuzu keşfetmeniz için yanınızdayız.
             </p>
           </div>
@@ -38,8 +38,18 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5">
               <li>
+                <Link href="/iceride-ne-var" className="text-sm hover:text-lavender transition-colors">
+                  İçeride ne var?
+                </Link>
+              </li>
+              <li>
+                <Link href="/pratikler" className="text-sm hover:text-lavender transition-colors">
+                  Pratikler
+                </Link>
+              </li>
+              <li>
                 <Link href="/uzmanlar" className="text-sm hover:text-lavender transition-colors">
-                  Uzmanlar
+                  Rehberler
                 </Link>
               </li>
               <li>
@@ -55,6 +65,11 @@ export function Footer() {
               <li>
                 <Link href="/videolar" className="text-sm hover:text-lavender transition-colors">
                   Videolar
+                </Link>
+              </li>
+              <li>
+                <Link href="/uyelik" className="text-sm hover:text-lavender transition-colors">
+                  Üyelik
                 </Link>
               </li>
             </ul>

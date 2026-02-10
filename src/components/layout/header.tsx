@@ -5,8 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils/cn";
-import { Button } from "@/components/ui/button";
 import { NAV_LINKS } from "@/lib/utils/constants";
+import { PrimaryPlanCta } from "@/components/cta/PrimaryPlanCta";
 import { tr } from "@/content/tr";
 
 export function Header() {
@@ -69,20 +69,24 @@ export function Header() {
               ))}
             </nav>
 
-            {/* Auth Buttons */}
+            {/* Auth: Login (secondary) + primary CTA */}
             <div className="hidden md:flex items-center gap-3">
-              <Button
-                variant="ghost"
-                size="sm"
+              <Link
+                href="/giris"
                 className={cn(
-                  !useSolidHeader && "text-white/90 hover:text-white hover:bg-white/10"
+                  "inline-flex items-center justify-center rounded-full h-9 px-4 text-sm font-medium transition-colors",
+                  useSolidHeader
+                    ? "text-foreground hover:bg-lavender/20"
+                    : "text-white/90 hover:text-white hover:bg-white/10"
                 )}
               >
                 {tr.auth.login}
-              </Button>
-              <Button variant={useSolidHeader ? "primary" : "gold"} size="sm">
-                {tr.auth.register}
-              </Button>
+              </Link>
+              <PrimaryPlanCta
+                variant={useSolidHeader ? "primary" : "gold"}
+                size="sm"
+                className={!useSolidHeader ? "shadow-lg" : undefined}
+              />
             </div>
 
             {/* Mobile Menu Button */}
@@ -133,12 +137,19 @@ export function Header() {
                 </Link>
               ))}
               <div className="mt-6 flex flex-col gap-3">
-                <Button variant="secondary" className="w-full">
+                <Link
+                  href="/giris"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center justify-center rounded-full border-2 border-lavender px-4 py-3 text-sm font-medium text-primary hover:bg-lavender/20 transition-colors"
+                >
                   {tr.auth.login}
-                </Button>
-                <Button variant="primary" className="w-full">
-                  {tr.auth.register}
-                </Button>
+                </Link>
+                <PrimaryPlanCta
+                  variant="primary"
+                  size="md"
+                  className="w-full justify-center"
+                  onClick={() => setMobileOpen(false)}
+                />
               </div>
             </motion.nav>
           </motion.div>

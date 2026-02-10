@@ -5,6 +5,11 @@ const projectRoot = path.resolve(process.cwd());
 const tailwindPath = path.join(projectRoot, "node_modules/tailwindcss");
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      { source: "/rehberler", destination: "/uzmanlar", permanent: true },
+    ];
+  },
   reactCompiler: true,
   turbopack: {
     root: projectRoot,
