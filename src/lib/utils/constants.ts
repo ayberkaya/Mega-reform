@@ -69,5 +69,4 @@ export const NAV_LINKS = [
   { href: "/uzmanlar", label: "Uzmanlar" },
   { href: "/makaleler", label: "Makaleler" },
   { href: "/kurslar", label: "Kurslar" },
-  { href: "/videolar", label: "Videolar" },
 ] as const;

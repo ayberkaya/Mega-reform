@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { PrimaryPlanCta } from "@/components/cta/PrimaryPlanCta";
 import { GradientOrb } from "@/components/animations/gradient-orb";
 import { BreathingCircle } from "@/components/animations/breathing-circle";
