@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { AuthProvider } from "@/providers/auth-provider";
 import { AnimationProvider } from "@/providers/animation-provider";
+import { PlanBuilderProvider } from "@/providers/PlanBuilderProvider";
 import { JsonLdOrganization, JsonLdWebSite } from "@/components/seo/json-ld";
 import "./globals.css";
 
@@ -65,7 +66,9 @@ export default function RootLayout({
         <JsonLdOrganization />
         <JsonLdWebSite />
         <AuthProvider>
-          <AnimationProvider>{children}</AnimationProvider>
+          <AnimationProvider>
+            <PlanBuilderProvider>{children}</PlanBuilderProvider>
+          </AnimationProvider>
         </AuthProvider>
       </body>
     </html>

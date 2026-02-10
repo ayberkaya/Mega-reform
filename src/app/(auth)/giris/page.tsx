@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CardGlass } from "@/components/ui/card";
-import { loginUser, loginWithGoogle } from "@/actions/auth-actions";
+import { loginUser, loginWithGoogle, loginDemoUser } from "@/actions/auth-actions";
 import { loginSchema } from "@/lib/validations/auth";
 import { tr } from "@/content/tr";
 
@@ -16,6 +16,20 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [demoLoading, setDemoLoading] = useState(false);
+
+  const handleDemoLogin = async () => {
+    setError("");
+    setDemoLoading(true);
+    const result = await loginDemoUser();
+    setDemoLoading(false);
+    if (result.error) {
+      setError(result.error);
+    } else {
+      router.push("/panel");
+      router.refresh();
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -142,6 +156,19 @@ export default function LoginPage() {
         >
           {tr.auth.login}
         </Button>
+
+        {process.env.NODE_ENV === "development" && (
+          <Button
+            type="button"
+            variant="outline"
+            size="lg"
+            className="w-full border-amber-500/50 text-amber-200 hover:bg-amber-500/10"
+            isLoading={demoLoading}
+            onClick={handleDemoLogin}
+          >
+            {tr.auth.demoLogin}
+          </Button>
+        )}
       </form>
 
       {/* Register link */}

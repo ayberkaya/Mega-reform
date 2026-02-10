@@ -39,6 +39,7 @@ export const tr = {
     orContinueWith: "veya şu şekilde devam edin",
     alreadyHaveAccount: "Zaten hesabınız var mı?",
     dontHaveAccount: "Hesabınız yok mu?",
+    demoLogin: "Demo ile giriş (geliştirme)",
   },
   landing: {
     heroTitle: "Ruhunuzun Yolculuğuna Başlayın",
